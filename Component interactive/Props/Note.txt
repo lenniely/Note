@@ -1,0 +1,69 @@
+You can pass information to a React component.
+
+How? By giving that component an attribute:
+
+<MyComponent foo="bar" />
+
+Let's say that you want to pass a component the message, "This is some top secret info.". Here's how you could do it:
+
+<Example message="This is some top secret info." />
+
+As you can see, to pass information to a component, you need a name for the information that you want to pass.
+
+In the above example, we used the name message. You can use any name you want.
+
+If you want to pass information that isn't a string, then wrap that information in curly braces. Here's how you would pass an array:
+
+<Greeting myInfo={["top", "secret", "lol"]} />
+
+In this next example, we pass several pieces of information to <Greeting />. The values that aren't strings are wrapped in curly braces:
+
+<Greeting name="Frarthur" town="Flundon" age={2} haunted={false} />
+------------------------------------------------------------------------------------------
+
+Every component's props object has a property named children.
+
+this.props.children will return everything in between a component's opening and closing JSX tags.
+
+So far, all of the components that you've seen have been self-closing tags, such as <MyComponentClass />. They don't have to be! You could write <MyComponentClass></MyComponentClass>, and it would still work.
+
+this.props.children would return everything in between <MyComponentClass> and </MyComponentClass>.
+
+Look at BigButton.js. In Example 1, <BigButton>'s this.props.children would equal the text, "I am a child of BigButton."
+
+In Example 2, <BigButton>'s this.props.children would equal a <LilButton /> component.
+
+In Example 3, <BigButton>'s this.props.children would equal undefined.
+
+If a component has more than one child between its JSX tags, then this.props.children will return those children in an array. However, if a component has only one child, then this.props.children will return the single child, not wrapped in an array.
+
+//BigButton.js
+var React = require('react');
+var LilButton = require('./LilButton');
+
+var BigButton = React.createClass({
+  render: function () {
+    console.log(this.props.children);
+    return <button>Yo I am big</button>;
+  }
+});
+
+
+// Example 1
+<BigButton>
+  I am a child of BigButton.
+</BigButton>
+
+
+// Example 2
+<BigButton>
+  <LilButton />
+</BigButton>
+
+
+// Example 3
+<BigButton />
+
+-------------------------------------------------------------------------------------------------
+getDefaultProps
+--------------------------------------------------------------------------------

@@ -1,0 +1,221 @@
+Dynamic information is information that can change.
+
+React components will often need dynamic information in order to render. For example, a component displaying a game's score will need to check the score before it can display it.
+
+There are two ways for a component to get dynamic information: props and state. Besides props and state, everything in a component should always stay exactly the same.
+
+A React component can access dynamic information in two ways: props and state.
+
+Unlike props, a component's state is not passed in from the outside. A component decides its own state.
+------------------------------------------------------------------------------------
+
+To make a component have state, write a getInitialState function:
+
+var Example = React.createClass({
+  getInitialState: function () {
+    return { mood: 'decent' };
+  },
+
+  render: function () {
+    return <div></div>;
+  }
+});
+
+<Example />
+
+getInitialState should return an object, like in the example above.
+
+Look at the bottom of the above code. <Example /> has a state of { mood: 'decent' }.
+------------------------------------------------------------------------------------------
+
+To read a component's state, use the expression this.state.name-of-property:
+
+var TodayImFeeling = React.createClass({
+  getInitialState: function () {
+    return { mood: 'decent' };
+  },
+
+  render: function(){
+    return (
+      <h1>
+        I'm feeling {this.state.mood}!
+      </h1>
+    );
+  }
+});
+
+The above component class reads a property in its state from inside of its render function.
+
+Just like this.props, you can use this.state from any property on the instructions object.
+-------------------------------------------------------------------------------------------
+
+A component can do more than just read its own state. A component can also change its own state.
+
+A component changes its state by calling the function this.setState.
+
+this.setState takes two arguments: an object that will update the component's state, and a callback. You basically never need the callback.
+
+In the code editor, take a look at Example.js. Notice that <Example /> has a state of:
+
+{
+  mood:   'great',
+  hungry: false
+}
+
+Now, let's say that <Example /> were to call:
+
+this.setState({ hungry: true });
+
+After that call, here is what <Example />'s state would be:
+
+{
+  mood:   'great',
+  hungry: true
+}
+
+The mood part of the state remains unaffected!
+
+this.setState takes an object, and merges that object with the component's current state. If there are properties in the current state that aren't part of that object, then those properties remain how they were.
+
+//Example.js
+var Example = React.createClass({
+  getInitialState: function () {
+    return {
+      mood:   'great',
+      hungry: false
+    };
+  },
+
+  render: function () {
+    return <div></div>;
+  }
+});
+
+<Example />
+-------------------------------------------------------------------------------------------
+
+The most common way to call this.setState is to call a custom function that wraps a this.setState call. makeSomeFog is an example:
+
+var Example = React.createClass({
+  getInitialState: function () {
+    return { weather: 'sunny' };
+  },
+
+  makeSomeFog: function () {
+    this.setState({
+      weather: 'foggy'
+    });
+  }
+});
+
+Let's walk through how a function wrapping this.setState might work in practice. In the code editor, read Mood.js all the way through.
+
+Here is how a <Mood />'s state would be set:
+
+    A user triggers an event (in this case a click event, triggered by clicking on a <button></button>).
+
+    The event from Step 1 is being listened for (in this case by the onClick attribute on line 20).
+
+    When this listened-for event occurs, it calls an event handler function (in this case this.toggleMood, called on line 20 and defined on lines 11-14).
+
+    Inside of the body of the event handler, this.setState is called (in this case on line 13).
+
+    The component's state is changed!
+
+Look at the statement on line 12. What does that do?
+
+Line 12 sets a variable named newMood equal to the opposite of this.state.mood. If this.state.mood is "good", then newMood will be "bad," and vice versa.
+
+A <Mood /> instance would display "I'm feeling good!" along with a button. Clicking on the button would change the display to "I'm feeling bad!" Clicking again would change back to "I'm feeling good!," etc. Try to follow the step-by-step walkthrough in Mood.js and see how all of this works.
+
+One final note: you can't call this.setState from inside of the render function! We'll explain why in the next exercise.
+
+//Mood.js
+var React = require('react');
+var ReactDOM = require('react-dom');
+
+var Mood = React.createClass({
+  getInitialState: function () {
+    return {
+      mood: 'good'    
+    };
+  },
+
+  toggleMood: function () {
+    var newMood = this.state.mood == 'good' ? 'bad' : 'good';
+    this.setState({ mood: newMood });
+  },
+
+  render: function () {
+    return (
+      <div>
+        <h1>I'm feeling {this.state.mood}!</h1>
+        <button onClick={this.toggleMood}>
+          Click Me
+        </button>
+      </div>
+    );
+  }
+});
+ReactDOM.render(<Mood />, document.getElementById('app'));
+
+//Toggle.js
+var React = require('react');
+var ReactDOM = require('react-dom');
+
+var green = '#39D1B4';
+var yellow = '#FFD712';
+
+var Toggle = React.createClass({
+  getInitialState: function(){
+    return {color: green};
+  },
+  changeColor: function(){
+    var backColor = this.state.color == green? yellow : green;
+    this.setState({color:backColor});
+  },
+  render: function () {
+    return (
+      <div style={{background: this.state.color}}>
+        <h1>
+          Change my color
+        </h1>
+        <button onClick={this.changeColor}>Change color</button>
+      </div>
+    );
+  }
+});
+ReactDOM.render(<Toggle />, document.getElementById('app'));
+
+--------------------------------------------------------------------------------------
+There's something odd about all of this.
+
+Look again at Toggle.js.
+
+When a user clicks on the <button></button>, the changeColor function is called. Take a look at changeColor.
+
+changeColor calls this.setState, which updates this.state.color. However, even if this.state.color changes from green to yellow, that alone doesn't make the screen's color change!
+
+The screen's color doesn't change until Toggle renders.
+
+Inside of the render function, it's this line:
+
+<div style={{background:this.state.color}}>
+
+that changes a virtual DOM object's color to the new this.state.color, eventually causing a change in the screen.
+
+If you call changeColor, shouldn't you then also have to call render again? changeColor only makes it so that, the next time that you render, the color will be different. Why can you see the new background right away, if you haven't re-rendered the component?
+
+Here's why: Any time that you call this.setState, this.setState AUTOMATICALLY calls render as soon as the state has changed.
+
+Think of this.setState as actually being two things: this.setState, immediately followed by render.
+
+That is why you can't call this.setState from inside of the render function! this.setState automatically calls render. If render calls this.setState, you will create an infinite loop.
+
+----------------------------------------------------------------------------------------------
+
+A React component should use props to store information that can be changed, but can only be changed by a different component.
+
+A React component should use state to store information that the component itself can change.
+---------------------------------------------------------------------------------------------
+
