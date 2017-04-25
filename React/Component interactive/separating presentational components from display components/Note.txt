@@ -7,5 +7,5 @@ Instead of rendering HTML-like JSX, the component should render another componen
 Following this pattern separates your business logic from your presentational logic, which is a Good Thing.
 http://www.dictionary.com/browse/good-thing
 
-https://medium.com/@learnreact/container-components-c0e67432e005
+https://medium.com/@learnreact/container-components-c0e67432e005  --important--
 

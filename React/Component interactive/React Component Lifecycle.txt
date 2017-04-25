@@ -1,0 +1,440 @@
+https://segmentfault.com/a/1190000003691119
+
+
+概述
+
+我们先来理一理React的生命周期方法有哪些：
+
+componentWillMount 渲染前调用一次，这个时候DOM结构还没有渲染。
+
+componentDidMount 渲染完成后调用一次，这个时候DOM结构已经渲染了。这个时候就可以初始化其他框架的设置了，如果利用jQuery绑定事件等等。
+
+componentWillReceiveProps 初始化渲染不会调用，在接收到新的props时，会调用这个方法。
+
+shouldComponentUpdate初始化渲染不会调用，接收到新的props或state时调用。
+
+componentWillUpdate初始化渲染不会调用，更新前调用。
+
+componentDidUpdate 初始化渲染不会调用，更新后调用。
+
+componentWillUnmount组件移除前调用。
+
+
+根据执行的时机，这些方法可以分为三类。
+
+组件挂载
+
+组件渲染前后会执行，而且只会执行一次，看个例子
+
+var A = React.createClass({      
+    componentWillMount: function () {            
+        console.log('A componentWillMount');
+    },
+    componentDidMount: function () {
+        console.log('A componentDidMount');
+    },
+    render: function () {
+        console.log('A render');
+        return null;
+    }
+});
+React.render(<A />, document.getElementById('example'));
+
+#控制台打印
+A componentWillMount
+A render
+A componentDidMount
+
+componentWillMount
+
+componentWillMount里允许我们初始化前最后一次对state进行修改，而不会触发重新渲染。
+
+var A = React.createClass({
+    getInitialState: function () {
+        return {init: false};
+    },
+    componentWillMount: function () {
+        this.setState({init: true});
+        console.log('A componentWillMount');
+    },
+    componentDidMount: function () {
+        console.log('A componentDidMount');
+    },
+    render: function () {
+        console.log('A render：' + this.state.init);
+        return null;
+    }
+});
+React.render(<A />, document.getElementById('example'));
+
+#控制台打印
+A componentWillMount
+A render：true
+A componentDidMount
+
+如果在componentDidMount中setState，结果就会是这样的。
+
+var A = React.createClass({
+    getInitialState: function () {
+        return {init: false};
+    },
+    componentWillMount: function () {
+        console.log('A componentWillMount');
+    },
+    componentDidMount: function () {
+        this.setState({init: true});
+        console.log('A componentDidMount');
+    },
+    render: function () {
+        console.log('A render：' + this.state.init);
+        return null;
+    }
+});
+React.render(<A />, document.getElementById('example'));
+
+#控制台打印
+A componentWillMount
+A render：false
+A componentDidMount
+A render：true
+
+也许会有人会问了：在这个方法中
+
+componentDidMount: function () {
+    this.setState({init: true});
+    console.log('A componentDidMount');
+}
+
+先调用了setState，为啥不是先打印 ‘A render：true’后打印‘A componentDidMount’呢？
+
+ !!!   setState并不是一个同步的方法，可以理解为异步。
+
+!!! 这里容易犯的错误就是，setState完后，马上就获取state的值做处理，结果获取的还是老的state。
+
+var A = React.createClass({
+    getInitialState: function () {
+        return {init: false};
+    },
+    componentWillMount: function () {
+        console.log('A componentWillMount');
+    },
+    componentDidMount: function () {
+        this.setState({init: true});
+        console.log('A componentDidMount：' + this.state.init);
+    },
+    render: function () {
+        console.log('A render：' + this.state.init);
+        return null;
+    }
+});
+React.render(<A />, document.getElementById('example'));
+
+#控制台打印
+A componentWillMount
+A render：false
+A componentDidMount：false
+A render：true
+
+如果想setState后获取到更新的值，可以放在回调里
+
+var A = React.createClass({
+    getInitialState: function () {
+        return {init: false};
+    },
+    componentWillMount: function () {
+        console.log('A componentWillMount');
+    },
+    componentDidMount: function () {
+        this.setState({init: true}, function () {
+            console.log('callback：' + this.state.init);
+        });
+        console.log('A componentDidMount');
+    },
+    render: function () {
+        console.log('A render：' + this.state.init);
+        return null;
+    }
+});
+React.render(<A />, document.getElementById('example'));
+
+#控制台打印
+A componentWillMount
+A render：false
+A componentDidMount
+A render：true
+callback：true
+
+componentDidMount
+
+componentDidMount渲染完成后执行一次，一般我们会在这里异步获取数据，重新渲染页面。例如
+
+var A = React.createClass({
+    getInitialState: function () {
+        return {data: []};
+    },
+    fetchData: function (callback) {
+        setTimeout(
+            function () {
+                callback([1, 2, 3]);
+            },
+            1000
+        );
+    },
+    componentDidMount: function () {
+        this.fetchData(function (data) {
+            this.setState({data: data});
+        }.bind(this));
+    },
+    render: function () {
+        var data = this.state.data;
+        return (
+            data.length ?
+                <ul>
+                    {this.state.data.map(function (item) {
+                        return <li>{item}</li>
+                    })}
+                </ul>
+                :
+                <div>loading data...</div>
+        )
+    }
+});
+React.render(<A />, document.getElementById('example'));
+
+官方文档上也说的很清楚，建议我们在componentDidMount中添加ajax，因为这是DOM已经完成了初始化的渲染，在componentWillMount中获取也可以，例如上面的例子，换在componentWillMount中获取数据，完全OK的。但是不建议大家这么干，第一个是官方不推荐，另一个因为DOM还没有渲染，这个时候的一些DOM操作就会出错！
+嵌套
+
+看个父子组件的执行过程，加深对初始化渲染过程的理解。
+
+var Child = React.createClass({
+    componentWillMount: function () {
+        console.log('Child componentWillMount');
+    },
+    componentDidMount: function () {
+        console.log('Child componentDidMount');
+    },
+    render: function () {
+        console.log('Child render');
+        return null;
+    }
+});
+
+var Parent = React.createClass({
+    componentWillMount: function () {
+        console.log('Parent componentWillMount');
+    },
+    componentDidMount: function () {
+        console.log('Parent componentDidMount');
+    },
+    render: function () {
+        console.log('Parent render');
+        return <Child />;
+    }
+});
+React.render(<Parent />, document.getElementById('example'));
+
+#控制台打印
+Parent componentWillMount
+Parent render
+Child componentWillMount
+Child render
+Child componentDidMount
+Parent componentDidMount
+
+组件更新
+
+更新方法只会在组件初始化渲染完成后且触发了重新渲染的条件才会执行。更新方法同挂载方法分处组件生命周期的不同的阶段。例如一个婴儿在出生前和出生后，这是两个不同的阶段。
+componentWillReceiveProps
+
+组件接收到新的props时会调用，一般在组件嵌套中比较常见，单一组件state变化是不会执行这个函数的。例如
+
+var A= React.createClass({
+    componentWillReceiveProps: function (nextProps) {
+        console.log('A componentWillReceiveProps');
+    },
+    componentDidMount: function () {
+        this.setState({name: 'zzz'});
+    },
+    render: function () {
+        return null;
+    }
+});
+React.render(<A/>, document.getElementById('example'));
+
+控制台啥也没打印
+
+因为对组件来说，他的props是不可变的。在看另外一个例子：
+
+var Child = React.createClass({
+    componentWillReceiveProps: function (nextProps) {
+        console.log('Child componentWillReceiveProps');
+    },
+    render: function () {
+        return <div>{this.props.name}</div>;
+    }
+});
+
+var Parent = React.createClass({
+    getInitialState: function () {
+        return {name: 'xxx'};
+    },
+    componentDidMount: function () {
+        this.setState({name: 'zzz'});
+    },
+    render: function () {
+        return <Child name={this.state.name}/>;
+    }
+});
+React.render(<Parent />, document.getElementById('example'));
+
+#控制台打印
+Child componentWillReceiveProps
+
+尽管没有传递属性，但是方法依旧会执行，只不过nextProps是个空对象而已。有人会问了，在Child组件当中，初始化渲染的时候name值为‘xxx’,第二次更新的时候name值为‘zzz’，为什么会说组件的props是不变的呢？这里不是发生变化了么？
+
+    按照我的个人理解，组件props不变指的是在它的生命周期的阶段中，保持不变。例如初始化渲染的过程中，如果在componentWillMount方法中，手动修改props，控制台就会提示如下警告。组件更新方法主要是相应state的变化，此处更不应该去修改props。
+
+Warning: Don't set .props.name of the React component <Child />. 
+Instead, specify the correct value when initially         
+creating the element. The element was created by Parent.
+
+componentWillReceiveProps主要是在更新前，最后一次修改state，而不会触发重新渲染。有点类似componentWillMount，但是执行的时间不一样，例如
+
+var Child = React.createClass({
+    getInitialState: function () {
+        return {show: false};
+    },
+    componentWillReceiveProps: function (nextProps) {
+        if (this.props.name !== nextProps.name) {
+            this.setState({show: true});
+        }
+    },
+    render: function () {
+        return this.state.show ? <div>{this.props.name}</div> : null;
+    }
+});
+
+var Parent = React.createClass({
+    getInitialState: function () {
+        return {name: 'xxx'};
+    },
+    componentDidMount: function () {
+        this.setState({name: 'xxx'});
+    },
+    render: function () {
+        return <Child name={this.state.name}/>;
+    }
+});
+React.render(<Parent />, document.getElementById('example'));
+
+我们要尽量避免父子组件当中都有state，这样组件的复用性就会降低，一般来说保持最外层的容器组件同服务器、用户交互，改变state，而子组件只负责通过props接收数据，然后渲染页面。这也是官方推荐的做法。
+shouldComponentUpdate
+
+更新前调用，返回值决定了组件是否更新。例如
+
+var A = React.createClass({
+    componentDidMount: function () {
+        this.setState({});
+    },
+    shouldComponentUpdate: function (nextProps, nextState) {
+        console.log('A shouldComponentUpdate');
+        return true;
+    },
+    componentWillUpdate: function () {
+        console.log('A componentWillUpdate');
+    },
+    componentDidUpdate: function () {
+        console.log('A componentDidUpdate');
+    },
+    render: function () {
+        console.log('A render');
+        return null ;
+    }
+});
+
+React.render(<A />, document.getElementById('example'));
+
+#控制台打印     
+A render
+A shouldComponentUpdate
+A componentWillUpdate
+A render
+A componentDidUpdate
+
+第一个render是初始化。组件会将render方法的返回值同已有的DOM结构比较，只更新有变动的的部分，这个过程是需要花费时间的，在这个方法中我可以决定是否需要更新组件，从而减少性能的损耗。
+
+    this.forceUpdate()不会执行shouldComponentUpdate方法，因为是强制更新，不会因为shouldComponentUpdate的返回值决定是否更新，所以跳过该方法。另外还需要注意的是，this.forceUpdate()调用会导致该组件的shouldComponentUpdate不执行，对子组件的shouldComponentUpdate方法没有影响。
+
+componentWillUpdate、componentDidUpdate
+
+组件更新前后执行，没办法决定组件是否更新，只能进行些非状态的操作，个人感觉用途不太明显。
+
+组件更新的整个过程
+
+var Child = React.createClass({
+    componentWillReceiveProps: function () {
+       console.log('Child componentWillReceiveProps');
+    },
+    shouldComponentUpdate: function (nextProps, nextState) {
+        console.log('Child shouldComponentUpdate');
+        return true;
+    },
+    componentWillUpdate: function () {
+        console.log('Child componentWillUpdate');
+    },
+    componentDidUpdate: function () {
+        console.log('Child componentDidUpdate');
+    },
+    render: function () {
+        console.log('Child render');
+        return null ;
+    }
+});
+
+var Parent = React.createClass({
+    componentDidMount: function () {
+        this.setState({});
+    },
+    render: function () {
+        return <Child />;
+    }
+});
+
+React.render(<Parent />, document.getElementById('example'));
+
+#控制台打印
+Child render
+Child componentWillReceiveProps
+Child shouldComponentUpdate
+Child componentWillUpdate
+Child render
+Child componentDidUpdate
+
+第一个render是初始化调用的，不是更新的过程。
+移除
+componentWillUnmount
+
+组件被移除前调用，这里可以做一些清除工作，例如清除内存，解除事件的监听等等。
+
+var A = React.createClass({
+    componentDidMount: function () {
+        this.interval = setInterval(
+            function () {
+                console.log('running');
+            },
+            100
+        );
+    },
+    handleClick: function () {
+      React.unmountComponentAtNode(document.getElementById('example'));
+    },
+    componentWillUnmount: function () {
+        clearInterval(this.interval);
+    },
+    render: function () {
+        return <button onClick={this.handleClick}>click</button>;
+    }
+});
+
+React.render(<A />, document.getElementById('example'));
+
