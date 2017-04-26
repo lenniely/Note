@@ -7,5 +7,77 @@ Instead of rendering HTML-like JSX, the component should render another componen
 Following this pattern separates your business logic from your presentational logic, which is a Good Thing.
 http://www.dictionary.com/browse/good-thing
 
-https://medium.com/@learnreact/container-components-c0e67432e005  --important--
+https://medium.com/@learnreact/container-components-c0e67432e005  -----important------
+
+When you separate a container component from a presentational component, the presentational component will always end up like this: one render function, and no other properties.
+
+If you have a component class with nothing but a render function, then you can rewrite that component class in a very different way. Instead of using React.createClass, you can write it as JavaScript function!
+
+A component class written as a function is called a stateless functional component. Stateless functional components have some advantages over typical component classes. We'll cover those advantages in this lesson.
+
+// A component class written in the usual way:
+var MyComponentClass = React.createClass({
+  render: function(){
+    return <h1>Hello world</h1>;
+  }
+});
+
+// The same component class, written as a stateless functional component:
+function MyComponentClass () {
+  return <h1>Hello world</h1>;
+}
+
+// Works the same either way:
+ReactDOM.render(
+	<MyComponentClass />,
+	document.getElementById('app')
+);
+
+------------------------------------------------------------------
+
+Stateless functional components usually have props passed to them.
+
+To access these props, give your stateless functional component a parameter. This parameter will automatically be equal to the component's props object.
+
+Not only are stateless functional components more concise, but they will subtly influence how you think about components in a positive way. They emphasize the fact that components are basically functions! A component takes two optional inputs, props and state, and outputs HTML and/or other components.
+
+
+// Normal way to display a prop:
+var MyComponentClass = React.createClass({
+  render: function () {
+    return <h1>{this.props.title}</h1>;
+  }
+});
+
+// Stateless functional component way to display a prop:
+function MyComponentClass (props) {
+  return <h1>{props.title}</h1>;
+}
+
+// Normal way to display a prop using a variable:
+var MyComponentClass = React.createClass({
+  render: function () {
+  	var title = this.props.title;
+    return <h1>{title}</h1>;
+  }
+});
+
+// Stateless functional component way to display a prop using a variable:
+function MyComponentClass (props) {
+	var title = props.title;
+  return <h1>{title}</h1>;
+}
+
+var React = require('react');
+function GuineaPigs(props){
+  var src= props.src;
+  return (
+      <div>
+        <h1>Cute Guinea Pigs</h1>
+        <img src={src} />
+      </div>
+    ); 
+}
+module.exports = GuineaPigs;
+-------------------------------------------------------------------
 
