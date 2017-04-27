@@ -1,5 +1,5 @@
 virtual DOM
-class ? className
+class & className
 
 var tasty = (
   <ul>

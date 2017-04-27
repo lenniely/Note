@@ -1,3 +1,23 @@
+组件的生命周期分成三个状态：
+    Mounting：已插入真实 DOM
+    Updating：正在被重新渲染
+    Unmounting：已移出真实 DOM
+三种状态共计五种处理函数,两种特殊状态的处理函数
+    componentWillMount()
+
+    componentDidMount()
+
+    componentWillUpdate(object nextProps, object nextState)
+
+    componentDidUpdate(object prevProps, object prevState)
+
+    componentWillUnmount()
+
+    componentWillReceiveProps(object nextProps)：已加载组件收到新的参数时调用
+
+    shouldComponentUpdate(object nextProps, object nextState)：组件判断是否重新渲染时调用
+
+-----------------------------------------------------------------------------------------------
 https://segmentfault.com/a/1190000003691119
 
 
