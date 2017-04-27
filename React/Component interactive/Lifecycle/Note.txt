@@ -1,110 +1,102 @@
-Lifecycle methods are methods that get called at certain moments in a component's life.
+The first updating lifecycle method is called componentWillReceiveProps.
 
-You can write a lifecycle method that gets called right before a component renders for the first time.
+When a component instance updates, componentWillReceiveProps gets called before the rendering begins.
 
-You can write a lifecycle method that gets called right after a component renders, every time except for the first time.
+As one might expect, componentWillReceiveProps only gets called if the component will receive props:
 
-You can attach lifecycle methods to a lot of different moments in a component's life. This has powerful implications!
--------------------------------------------------------------------------------------
+// componentWillReceiveProps will get called here:
+ReactDOM.render(
+  <Example prop="myVal" />,
+  document.getElementById('app')
+);
 
-There are three categories of lifecycle methods: mounting, updating, and unmounting. This lesson is about the first category: mounting lifecycle methods.
-
-A component "mounts" when it renders for the first time. This is when mounting lifecycle methods get called.
-
-There are three mounting lifecycle methods:
-
-    componentWillMount
-    render
-    componentDidMount
-
-When a component mounts, it automatically calls these three methods, in order.
--------------------------------------------------------------------------------------
-
-The first mounting lifecycle method is called componentWillMount.
-
-When a component renders for the first time, componentWillMount gets called right before render.
-
-Look at Example.js, and follow these steps:
-
-    On lines 14-17, <Example /> is rendered for the first time. <Example />'s mounting period begins.
-    <Example /> calls the first mounting lifecycle method, componentWillMount.
-    componentWillMount executes, and an alert appears on the screen. (lines 5-7)
-    After componentWillMount has finished, <Example /> calls the second mounting lifecycle method: render.
-    <h1>Hello world</h1> appears on the screen (lines 9-11)
-    Two seconds later, <Example /> renders again (lines 20-22). componentWillMount does NOT get called, because mounting lifecycle events only execute the first time that a component renders.
-
-You can call this.setState from within componentWillMount!
-
-Look at Example2.js for an example of this.setState inside of componentWillMount. See if you can follow how <Example2 /> would render <h1>Hello world</h1>.
-
-//Example.js
-var React = require('react');
-var ReactDOM = require('react-dom');
-
-var Example = React.createClass({
-  componentWillMount: function () {
-    alert('component is about to mount!');
-  },
-
-  render: function () {
-    return <h1>Hello world</h1>;
-  }
-});
-
+// componentWillReceiveProps will NOT get called here:
 ReactDOM.render(
   <Example />,
   document.getElementById('app')
 );
 
-setTimeout(function(){
-  ReactDOM.render(
-    <Example />,
-    document.getElementById('app')
-  );
-}, 2000);
+Look in the code editor for an example of componentWillReceiveProps. Read it through and try to figure out how it works.
 
+componentWillReceiveProps automatically gets passed one argument: an object called nextProps. nextProps is a preview of the upcoming props object that the component is about to receive.
 
-//Example2.js
+On line 6, nextProps.text will evaluate to "Hello world".
+
+//Example.js
 var React = require('react');
-var ReactDOM = require('react-dom');
 
-var Example2 = React.createClass({
-  getInitialState: function () {
-    return { text: '' };
-  },
-
-  componentWillMount: function () {
-    this.setState({ text: 'Hello world' });
+var Example = React.createClass({
+  componentWillReceiveProps: function (nextProps) {
+    alert("Check out the new props.text that "
+    	+ "I'm about to get:  " + nextProps.text);
   },
 
   render: function () {
-    return <h1>{this.state.text}</h1>;
+    return <h1>{this.props.text}</h1>;
   }
 });
 
+
+// The first render won't trigger
+// componentWillReceiveProps:
 ReactDOM.render(
-  <Example2 />,
-  document.getElementById('app')
+	<Example text="Hello world" />,
+	document.getElementById('app')
 );
-------------------------------------------------------------------------
 
-render is a lifecycle method!
+// After the first render, 
+// subsequent renders will trigger
+// componentWillReceiveProps:
+setTimeout(function () {
+	ReactDOM.render(
+		<Example text="Hello world" />,
+		document.getElementById('app')
+	);
+}, 1000);
+----------------------------------------------------------------------------------------------------------
+The second updating lifecycle method is called shouldComponentUpdate.
 
-We won't go over render here - we've already talked about it plenty. However, you should understand how render fits into the mounting period. Whenever a component mounts, componentWillMount is called first, followed by render, followed by componentDidMount.
+When a component updates, shouldComponentUpdate gets called after componentWillReceiveProps, but still before the rendering begins.
 
-render belongs to two categories: mounting lifecycle methods, and updating lifecycle methods. We'll cover updating lifecycle methods in the next lesson. But first, there's one final mounting lifecycle method!
--------------------------------------------------------------------------
+Look at Example.js in the code editor. Read it through and try to figure out how shouldComponentUpdate works.
 
-The final mounting lifecycle method is called componentDidMount.
+shouldComponentUpdate should return either true or false.
 
-When a component renders for the first time, componentDidMount gets called right after the HTML from render has finished loading. 
+If shouldComponentUpdate returns true, then nothing noticeable happens. But if shouldComponentUpdate returns false, then the component will not update! None of the remaining lifecycle methods for that updating period will be called, including render.
 
-componentDidMount gets used a lot!
+The best way to use shouldComponentUpdate is to have it return false only under certain conditions. If those conditions are met, then your component will not update.
 
-If your React app uses AJAX to fetch initial data from an API, then componentDidMount is the place to make that AJAX call. More generally, componentDidMount is a good place to connect a React app to external applications, such as web APIs or JavaScript frameworks. componentDidMount is also the place to set timers using setTimeout or setInterval.
+shouldComponentUpdate automatically receives two arguments: nextProps and nextState. It's typical to compare nextProps and nextState to the current this.props and this.state, and use the results to decide what to do. See how Example.js does this on lines 8-17.
 
-If that sounds vague, don't worry. You'll put lifecycle methods into practice in this course's final project, and then more in the next course! Not to mention in the real world...
+//Example.js
+var React = require('react');
+
+var Example = React.createClass({
+  getInitialState: function () {
+    return { subtext: 'Put me in an <h2> please.' };
+  },
+
+  shouldComponentUpdate: function (nextProps, nextState) {
+    if ((this.props.text == nextProps.text) && 
+      (this.state.subtext == nextState.subtext)) {
+      alert("Props and state haven't changed, so I'm not gonna update!");
+      return false;
+    } else {
+      alert("Okay fine I will update.")
+      return true;
+    }
+  },
+
+  render: function () {
+    return (
+      <div>
+        <h1>{this.props.text}</h1>
+        <h2>{this.state.subtext}</h2>
+      </div>
+    );
+  }
+});
+------------------------------------------------------------------------------------------------------------
 
 
-------------------------------------------------------------------------
 

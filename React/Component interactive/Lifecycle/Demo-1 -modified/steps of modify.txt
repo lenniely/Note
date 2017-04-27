@@ -1,0 +1,80 @@
+1.
+
+Select App.js. Click Run. You'll see a game load in the browser.
+
+The goal of this game is to click on high numbers. Every click has to be a higher number than the previous click.
+
+The game has some problems. The numbers move around in a jerky way. "Top Number" is broken. Worst of all, the game never ends!
+
+We'll use lifecycle methods to fix these problems.
+
+Start a new game. When you're done, click the refresh button in the top left of the browser column to make the game stop.
+2.
+
+"Top Number" is supposed to show the highest number that you've clicked so far.
+
+It isn't working! No matter what number you click, "Top Number" thinks that that number is the highest number so far.
+
+Select TopNumber.js. Take a look at the TopNumber component class.
+
+In between getInitialState and render, give TopNumber a new property named componentWillReceiveProps.
+
+Make componentWillReceiveProps's value equal to this empty function:
+
+function (nextProps) {},
+
+3.
+
+Look at TopNumber's render function. The problem lies in between the <h1></h1> tags.
+
+Whenever you click on a number in the browser, that number gets passed from App, to TopNumber, as this.props.number. In between the <h1></h1> tags, you can see that TopNumber displays every this.props.number that it gets.
+
+When TopNumber gets a new this.props.number, you don't always want it displayed! You want to check whether that number is, in fact, the highest number yet. If it is the highest, only then should it get displayed in the <h1></h1>.
+
+componentWillReceiveProps can help!
+
+Whenever you get a new this.props.number, componentWillReceiveProps sees it before render does. componentWillReceiveProps can scan this new this.props.number, and decide whether it should be displayed.
+
+Here's a starting point:
+
+componentWillReceiveProps: function (nextProps) {
+  if (nextProps.number > this.state.highest) {
+    // nextProps.number is the new highest number so far!
+    // Display it!
+  }
+},
+
+4.
+
+Look at the getInitialState function on lines 11-13. this.state.highest starts equal to 0... and never changes! It will always be 0.
+
+You need this.state.highest to live up to its name and keep track of the highest number so far.
+
+In componentWillReceiveProps, remove these lines:
+
+// nextProps.number is the new highest number so far!
+// Display it!
+
+In their place, update this.state.highest:
+
+this.setState({
+  highest: nextProps.number
+});
+
+5.
+
+Good! Now whenever TopNumber gets a new this.props.number, componentWillReceiveProps will use it to keep track of the highest number so far.
+
+All that remains is to display the results!
+
+In TopNumber's render function, replace {this.props.number} with {this.state.highest}.
+6.
+
+Try playing another round. It's still definitely broken, but Top Number should work now!
+
+This is a common use of componentWillReceiveProps: comparing incoming props to current props or state, and deciding what to render based on that comparison.
+
+If you are already comfortable with React, then you may have caught a detail about this example that is considered bad form. this.state.highest is derived from props. That means that we use information from props to set the value of information stored in state. We'll go into this more in the next course!
+---------------------------------------------------------------------------------------------
+
+
