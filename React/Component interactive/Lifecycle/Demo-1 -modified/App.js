@@ -67,7 +67,13 @@ var App = React.createClass({
   componentWillMount: function() {
     this.intervals = [];
   },
-
+	
+  componentDidUpdate: function(prevProps, prevState){
+  	if(this.state.latestClick < prevState.latestClick){
+  		this.endGame();
+		}
+	},
+                            
   render: function () {
     var buttonStyle = {
       display: this.state.game ? 'none' : 'inline-block'

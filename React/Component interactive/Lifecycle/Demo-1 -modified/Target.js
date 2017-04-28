@@ -6,6 +6,10 @@ var Target = React.createClass({
     number: React.PropTypes.number.isRequired
   },
 
+  shouldComponentUpdate: function (nextProps, nextState) {
+    return this.props.number != nextProps.number;
+  },
+
   render: function () {
     var visibility = this.props.number
       ? 'visible' : 'hidden';

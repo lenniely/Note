@@ -77,4 +77,106 @@ This is a common use of componentWillReceiveProps: comparing incoming props to c
 If you are already comfortable with React, then you may have caught a detail about this example that is considered bad form. this.state.highest is derived from props. That means that we use information from props to set the value of information stored in state. We'll go into this more in the next course!
 ---------------------------------------------------------------------------------------------
 
+1.
+
+Select Target.js and look at the Target component class.
+
+A <Target /> renders a number in a random location. In this game, a "target" is a number that you try to click on.
+
+Whenever a new target appears, they all rerender. This is a problem!
+
+When a target renders, it picks a random location. When a target rerenders, it picks a new random location! This is why the numbers move in such a jerky way: whenever a new one appears, all of the old ones move to a new random place.
+
+When a new target appears, you want all of the old targets to stay where they are! This will make the gameplay much nicer.
+
+You can use shouldComponentUpdate to make Target only rerender when it actually needs to.
+
+Give Target a new property named shouldComponentUpdate. Set shouldComponentUpdate's value equal to this function:
+
+function (nextProps, nextState) {},
+
+2.
+
+You want shouldComponentUpdate to return true when a target first appears. This will cause Target to update as usual.
+
+You want shouldComponentUpdate to return false when a target has already rendered, and is about to repeat the same number as its last render. This will cause Target to cancel its update.
+
+Inside the body of the shouldComponentUpdate function, write the following code:
+
+return this.props.number != nextProps.number;
+
+Click Run and try a new game. It should be much smoother!
+-----------------------------------------------------------------------------
+
+Let's use componentWillMount to make the screen's background turn yellow if your top number breaks 950,000.
+
+You will use this expression to change the screen's background:
+
+document.body.style.background = (new color goes here);
+
+componentWillUpdate is a good place for setup code like this, that engages with the non-React world. document.body has nothing to do with React at all.
+
+Open TopNumber.js.
+
+Give TopNumber a new property named componentWillUpdate.
+
+For now, set componentWillUpdate equal to the following empty function:
+
+function (nextProps, nextState) {},
+
+2.
+
+On every render, you want componentWillUpdate to check whether the background is yellow already. If it isn't, then you want to check whether the top number is at least 950,000. If it is, then make the background yellow.
+
+Add the following code to the body of componentWillUpdate:
+
+if (document.body.style.background != yellow 
+  && this.state.highest >= 950*1000) {
+  document.body.style.background = yellow;
+}
+
+Make sure not to put yellow in quotes! You are referencing the variable defined on line 3.
+
+Of course, you'll also need to change the color back to white when a user starts a new game! You can do this with the help of this.props.game, a boolean that reports whether or not a current game is in progress.
+
+Expand your if statement into an else/if:
+
+if (document.body.style.background != yellow 
+  && this.state.highest >= 950*1000) {
+  document.body.style.background = yellow;
+} else if (!this.props.game 
+  && nextProps.game) {
+  document.body.style.background = 'white';
+}
+
+Click Run and the let the browser refresh. See if you can get the yellow background.
+------------------------------------------------------------------------------------------
+
+1.
+
+In the code editor, select App.js.
+
+We can finally add the most important fix: making the game end!
+
+You can see on lines 55-65 that there is already an endGame function set up that will cause the game to stop. You just have to decide when to call it.
+
+You want the game to end when a user clicks a number less than their previous click. componentDidUpdate can do that!
+
+Look at getInitialState, on lines 18-24. You can see that App has a this.state.latestClick property. this.state.latestClick stores the value of the most recently clicked number.
+
+This is the value that you need! You're trying to compare the most recent click with the second-to-most-recent click.
+
+Give App a property with name of componentDidUpdate.
+
+Set your new property's value equal to this function:
+
+function (prevProps, prevState) {
+  if (this.state.latestClick < prevState.latestClick) {
+    this.endGame();
+  }
+},
+Click Run and play a new game. So much better!
+-----------------------------------------------------------------------------------------
+
+
 

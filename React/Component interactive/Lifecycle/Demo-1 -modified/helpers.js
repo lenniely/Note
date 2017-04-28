@@ -7,6 +7,10 @@ var random = function (min, max) {
 	return Math.floor(r * (max - min) + min);
 };
 
+var exists = function (x) {
+	if (x != null) return x;
+}
+
 var clone = function (obj) {
 	var newObj = {};
 	for (var prop in obj) {
@@ -19,5 +23,6 @@ var clone = function (obj) {
 
 module.exports = {
 	random: random,
+	exists: exists,
 	clone: clone
 };
