@@ -1,21 +1,39 @@
-import React， {Component} from 'react'
+import React, { Component } from 'react'
 
 class commentInput extends Component {
 	constructor(){
 		super();
-		this.state ={};
+		this.state ={
+			username: '',
+			usercommnet: ''
+		};
+	}
+
+	handleUserNameChange(e){
+		this.setState({
+			username: e.target.value
+		});
+	}
+
+	handleCommentChange(e){
+		this.setState({
+			 usercommnet: e.target.value
+		});
 	}
 
 	render(){
 		return(
-			<div>
+			<div className='comment-input'>
 				<div>
-					<label htmlfor='userName'>用户名</lable>
-					<input id='userName' type='text'/>
+					<label htmlFor='userName'>用户名</label>
+					<input id='userName' type='text' value={this.state.username} onChange={this.handleUserNameChange.bind(this)}/>
 				</div>
 				<div>
-					<label htmlfor='comment'>评论</label>
-					<input id='comment' type='textarea' col=255 row=50/>
+					<label htmlFor='comment'>评论</label>
+					<textarea id='comment' rows='10' value={this.state.usercommnet} onChange={this.handleCommentChange.bind(this)}/>
+				</div>
+				<div>
+					<button type='submit'>发布</button>
 				</div>
 			</div>
 		);
