@@ -1,0 +1,54 @@
+/* Table style */
+
+table {
+	border-collapse: collapse;
+	border: 2px solid purple;
+	table-layout: fixed;
+}
+
+caption {
+	background: #fff;
+}
+
+thead tr: nth-child(3) {
+	width:30%;
+}
+
+tbody {
+	background: #fff;
+}
+
+/* HTML
+<table> 
+	<caption>
+	<thead>
+		<tr>
+			<th scope="col"></th>
+			<th scope="col"></th>
+			<th scope="col"></th>
+		</tr>
+		<tr>
+			<th></th>
+			<th></th>
+			<th></th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<th scope="row"></th>
+			<td></td>
+			<td></td>
+		</tr>
+		<tr>
+			<th scope="row"></th>
+			<td></td>
+			<td></td>
+		</tr>
+	</tbody>
+	<tfoot>
+		<tr>
+			<th scope="row" colspan="2"> </th>
+			<td></td>
+		</tr>
+	</tfoot>
+</table>*/

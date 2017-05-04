@@ -5,7 +5,7 @@ class commentInput extends Component {
 		super();
 		this.state ={
 			username: '',
-			usercommnet: ''
+			usercomment: ''
 		};
 	}
 
@@ -17,24 +17,41 @@ class commentInput extends Component {
 
 	handleCommentChange(e){
 		this.setState({
-			 usercommnet: e.target.value
+			 usercomment: e.target.value
+		});
+	}
+
+	handleSubmit(e){
+		const {username, usercomment} = this.state;
+		if(this.props.onSubmit){
+			this.props.onSubmit(usercomment);
+		}
+		this.setState({
+			usercomment: ''
 		});
 	}
 
 	render(){
 		return(
 			<div className='comment-input'>
-				<div>
-					<label htmlFor='userName'>用户名</label>
-					<input id='userName' type='text' value={this.state.username} onChange={this.handleUserNameChange.bind(this)}/>
+				<div className='comment-field'>
+		          <span className='comment-field-name'>用户名：</span>
+		          <div className='comment-field-input'>
+		          	<input value={this.state.username} onChange={this.handleUserNameChange.bind(this)} />
+		          </div>
+		        </div>
+
+		        <div className='comment-field'>
+		          <span className='comment-field-name'>评论内容：</span>
+		          <div className='comment-field-input'>
+		            <textarea value={this.state.usercomment} onChange={this.handleCommentChange.bind(this)}/>
+		          </div>
 				</div>
-				<div>
-					<label htmlFor='comment'>评论</label>
-					<textarea id='comment' rows='10' value={this.state.usercommnet} onChange={this.handleCommentChange.bind(this)}/>
-				</div>
-				<div>
-					<button type='submit'>发布</button>
-				</div>
+				<div className='comment-field-button'>
+		          <button onClick={this.handleSubmit.bind(this)}>
+		            发布
+		          </button>
+		        </div>
 			</div>
 		);
 	}

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Test</title>
+	<meta charset="utf-8">
+	<style type='text/css' media='screen'>
+		form {
+			display: table;
+		}
+		form div {
+			display: table-row;
+		}
+		form label, form input, form textarea {
+			display: table-cell;
+			text-align: left;
+			vertical-align: middle; /*通过table和table-cell的方式实现垂直居中 IE7不适用  http://blog.csdn.net/u014607184/article/details/51820508*/
+			margin: 5px;
+		}
+	</style>
+</head>
+<body>
+	<form>
+		<div>
+			<label for='test-user-name'>用户名</label>
+			<input id='test-user-name' />
+		</div>
+		<div>
+			<label for='test-user-comment'>评论</label>
+			<textarea id='test-user-comment' cols="40" rows="10"></textarea> 
+		</div>
+	</form>
+</body>
+</html>
