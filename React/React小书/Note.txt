@@ -151,7 +151,50 @@ ReactDOM.render(
 )
 ------------------------------------------------------------------------------------------------------------
 
+static default = {
+	key: value
+};
+------------------------------------------------------------------------------------------------------------
+
+class CommentApp extends Component{
+	constructor(){
+		super();
+		this.state = {
+			comments: []
+		}
+	}
+	handleSubmit(comment){
+		this.state.comments.push(comment);
+		this.setState({comments: this.state.comments});
+	}
+	render(){
+		return(
+			<div className='wrapper'>
+				<CommentInput onSubmit={this.handleSubmit.bind(this)} />
+				<CommentList comments={this.state.comments}/>
+			</div>
+		);
+	}
+}
 
 
- 
+这里的代码直接往 state.comments 数组里面插入数据其实违反了 React.js 的 state 不可直接修改的原则 。但其实这个原则是为了 shouldComponentUpdate 的优化和变化的跟踪，而这种目的在使用 React-redux 的时候其实会自然而然达到，我们很少直接手动地优化，这时候这个原则就会显得有点鸡肋。所以这里为了降低大家的理解成本就不强制使用这个原则，有兴趣的朋友可以参考：
+https://facebook.github.io/react/tutorial/tutorial.html#why-immutability-is-important
+---------------------------------------------------------------------------------------------------------------
 
+前端应用状态管理 —— 状态提升
+
+当某个状态被多个组件依赖或者影响的时候，就把该状态提升到这些组件的最近公共父组件中去管理，用 props 传递数据或者函数来管理这种依赖或着影响的行为。
+
+你会发现这种无限制的提升不是一个好的解决方案。一旦发生了提升，你就需要修改原来保存这个状态的组件的代码，也要把整个数据传递路径经过的组件都修改一遍，好让数据能够一层层地传递下去。这样对代码的组织管理维护带来很大的问题。到这里你可以抽象一下问题：
+
+    如何更好的管理这种被多个组件所依赖或影响的状态？
+
+你可以看到 React.js 并没有提供好的解决方案来管理这种组件之间的共享状态。在实际项目当中状态提升并不是一个好的解决方案，所以我们后续会引入 Redux 这样的状态管理工具来帮助我们来管理这种共享状态.
+----------------------------------------------------------------------------------------------------------------
+
+挂载阶段的组件生命周期
+
+ React.js 将组件渲染，并且构造 DOM 元素然后塞入页面的过程称为组件的挂载
+
+construct --> componentWillMount --> render --> componentDidMount
