@@ -1,86 +1,86 @@
-¸ÃÎÄ¼þ¼ÐËùÓÐÄÚÈÝ¶¼À´×Ôºú×Ó´ó¹þµÄreactÐ¡Êé£ºhttp://huziketang.com/books/react/
+ï»¿è¯¥æ–‡ä»¶å¤¹æ‰€æœ‰å†…å®¹éƒ½æ¥è‡ªèƒ¡å­å¤§å“ˆçš„reactå°ä¹¦ï¼šhttp://huziketang.com/books/react/
 
-create-react-app¹¤¾ß
+create-react-appå·¥å…·
 -------------------------------------------------------------------------------------
 
-1. ×é¼þµÄ render ·½·¨£º 
+1. ç»„ä»¶çš„ render æ–¹æ³•ï¼š 
 
-Ö±½ÓÊ¹ÓÃ class ÔÚ React.js µÄÔªËØÉÏÌí¼ÓÀàÃûÈç <div class=¡°xxx¡±> ÕâÖÖ·½Ê½ÊÇ²»ºÏ·¨µÄ¡£React.js ÖÐ¶¨ÒåÁËÒ»ÖÖÐÂµÄ·½Ê½£ºclassName À´°ïÖúÎÒÃÇ¸øÔªËØÌí¼ÓÀàÃû¡£
+ç›´æŽ¥ä½¿ç”¨ class åœ¨ React.js çš„å…ƒç´ ä¸Šæ·»åŠ ç±»åå¦‚ <div class=â€œxxxâ€> è¿™ç§æ–¹å¼æ˜¯ä¸åˆæ³•çš„ã€‚React.js ä¸­å®šä¹‰äº†ä¸€ç§æ–°çš„æ–¹å¼ï¼šclassName æ¥å¸®åŠ©æˆ‘ä»¬ç»™å…ƒç´ æ·»åŠ ç±»åã€‚
 
-»¹ÓÐÒ»¸öÌØÀý¾ÍÊÇ for ÊôÐÔ£¬ÀýÈç <label for='male'>Male</label>£¬ÒòÎª for Ò²ÊÇ JavaScript µÄ¹Ø¼ü×Ö£¬ËùÒÔÔÚ JSX ÓÃ htmlFor Ìæ´ú£¬¼´ <label htmlFor='male'>Male</label>¡£
+è¿˜æœ‰ä¸€ä¸ªç‰¹ä¾‹å°±æ˜¯ for å±žæ€§ï¼Œä¾‹å¦‚ <label for='male'>Male</label>ï¼Œå› ä¸º for ä¹Ÿæ˜¯ JavaScript çš„å…³é”®å­—ï¼Œæ‰€ä»¥åœ¨ JSX ç”¨ htmlFor æ›¿ä»£ï¼Œå³ <label htmlFor='male'>Male</label>ã€‚
 
-¶ÔÓÚ{}£¬JSX ¿ÉÒÔ·ÅÖÃÈÎºÎ±í´ïÊ½ÄÚÈÝ¡£ËùÒÔÒ²¿ÉÒÔ·Å JSX£¬Êµ¼ÊÉÏ£¬ÎÒÃÇ¿ÉÒÔÔÚ render º¯ÊýÄÚ²¿¸ù¾Ý²»Í¬Ìõ¼þ·µ»Ø²»Í¬µÄ JSX¡£Èç¹ûÄãÔÚ±í´ïÊ½²åÈëÀïÃæ·µ»Ø null £¬ÄÇÃ´ React.js »áÊ²Ã´¶¼²»ÏÔÊ¾£¬Ïàµ±ÓÚºöÂÔÁË¸Ã±í´ïÊ½²åÈë¡£½áºÏÌõ¼þ·µ»ØµÄ»°£¬ÎÒÃÇ¾Í×öµ½ÏÔÊ¾»òÕßÒþ²ØÄ³Ð©ÔªËØ¡£
+å¯¹äºŽ{}ï¼ŒJSX å¯ä»¥æ”¾ç½®ä»»ä½•è¡¨è¾¾å¼å†…å®¹ã€‚æ‰€ä»¥ä¹Ÿå¯ä»¥æ”¾ JSXï¼Œå®žé™…ä¸Šï¼Œæˆ‘ä»¬å¯ä»¥åœ¨ render å‡½æ•°å†…éƒ¨æ ¹æ®ä¸åŒæ¡ä»¶è¿”å›žä¸åŒçš„ JSXã€‚å¦‚æžœä½ åœ¨è¡¨è¾¾å¼æ’å…¥é‡Œé¢è¿”å›ž null ï¼Œé‚£ä¹ˆ React.js ä¼šä»€ä¹ˆéƒ½ä¸æ˜¾ç¤ºï¼Œç›¸å½“äºŽå¿½ç•¥äº†è¯¥è¡¨è¾¾å¼æ’å…¥ã€‚ç»“åˆæ¡ä»¶è¿”å›žçš„è¯ï¼Œæˆ‘ä»¬å°±åšåˆ°æ˜¾ç¤ºæˆ–è€…éšè—æŸäº›å…ƒç´ ã€‚
 --------------------------------------------------------------------------------------
 
-2. ÊÂ¼þ¼àÌý
+2. äº‹ä»¶ç›‘å¬
 
-ÔÚ React.js ²»ÐèÒªÊÖ¶¯µ÷ÓÃä¯ÀÀÆ÷Ô­ÉúµÄ addEventListener ½øÐÐÊÂ¼þ¼àÌý¡£React.js °ïÎÒÃÇ·â×°ºÃÁËÒ»ÏµÁÐµÄ on* µÄÊôÐÔ£¬µ±ÄãÐèÒªÎªÄ³¸öÔªËØ¼àÌýÄ³¸öÊÂ¼þµÄÊ±ºò£¬Ö»ÐèÒª¼òµ¥µØ¸øËü¼ÓÉÏ on* ¾Í¿ÉÒÔÁË¡£¶øÇÒÄã²»ÐèÒª¿¼ÂÇ²»Í¬ä¯ÀÀÆ÷¼æÈÝÐÔµÄÎÊÌâ£¬React.js ¶¼°ïÎÒÃÇ·â×°ºÃÕâÐ©Ï¸½ÚÁË¡£
+åœ¨ React.js ä¸éœ€è¦æ‰‹åŠ¨è°ƒç”¨æµè§ˆå™¨åŽŸç”Ÿçš„ addEventListener è¿›è¡Œäº‹ä»¶ç›‘å¬ã€‚React.js å¸®æˆ‘ä»¬å°è£…å¥½äº†ä¸€ç³»åˆ—çš„ on* çš„å±žæ€§ï¼Œå½“ä½ éœ€è¦ä¸ºæŸä¸ªå…ƒç´ ç›‘å¬æŸä¸ªäº‹ä»¶çš„æ—¶å€™ï¼Œåªéœ€è¦ç®€å•åœ°ç»™å®ƒåŠ ä¸Š on* å°±å¯ä»¥äº†ã€‚è€Œä¸”ä½ ä¸éœ€è¦è€ƒè™‘ä¸åŒæµè§ˆå™¨å…¼å®¹æ€§çš„é—®é¢˜ï¼ŒReact.js éƒ½å¸®æˆ‘ä»¬å°è£…å¥½è¿™äº›ç»†èŠ‚äº†ã€‚
 
-²Î¿¼¹ÙÍøÎÄµµ£º SyntheticEvent - React (https://facebook.github.io/react/docs/events.html#supported-events),×¢ÒâÊÂ¼þÊôÐÔÃû¶¼±ØÐëÒªÓÃÍÕ·åÃüÃû·¨¡£
+å‚è€ƒå®˜ç½‘æ–‡æ¡£ï¼š SyntheticEvent - React (https://facebook.github.io/react/docs/events.html#supported-events),æ³¨æ„äº‹ä»¶å±žæ€§åéƒ½å¿…é¡»è¦ç”¨é©¼å³°å‘½åæ³•ã€‚
 
-Ã»ÓÐ¾­¹ýÌØÊâ´¦ÀíµÄ»°£¬ÕâÐ© on* µÄÊÂ¼þ¼àÌýÖ»ÄÜÓÃÔÚÆÕÍ¨µÄ HTML µÄ±êÇ©ÉÏ£¬¶ø²»ÄÜÓÃÔÚ×é¼þ±êÇ©ÉÏ¡£Ò²¾ÍÊÇËµ£¬<Header onClick={¡­} /> ÕâÑùµÄÐ´·¨²»»áÓÐÊ²Ã´Ð§¹ûµÄ¡£ÕâÒ»µãÒª×¢Òâ£¬µ«ÊÇÓÐ°ì·¨¿ÉÒÔ×öµ½ÕâÑùµÄ°ó¶¨
+æ²¡æœ‰ç»è¿‡ç‰¹æ®Šå¤„ç†çš„è¯ï¼Œè¿™äº› on* çš„äº‹ä»¶ç›‘å¬åªèƒ½ç”¨åœ¨æ™®é€šçš„ HTML çš„æ ‡ç­¾ä¸Šï¼Œè€Œä¸èƒ½ç”¨åœ¨ç»„ä»¶æ ‡ç­¾ä¸Šã€‚ä¹Ÿå°±æ˜¯è¯´ï¼Œ<Header onClick={â€¦} /> è¿™æ ·çš„å†™æ³•ä¸ä¼šæœ‰ä»€ä¹ˆæ•ˆæžœçš„ã€‚è¿™ä¸€ç‚¹è¦æ³¨æ„ï¼Œä½†æ˜¯æœ‰åŠžæ³•å¯ä»¥åšåˆ°è¿™æ ·çš„ç»‘å®š
 
-event£ººÍÆÕÍ¨ä¯ÀÀÆ÷Ò»Ñù£¬ÊÂ¼þ¼àÌýº¯Êý»á±»×Ô¶¯´«ÈëÒ»¸ö event ¶ÔÏó£¬Õâ¸ö¶ÔÏóºÍÆÕÍ¨µÄä¯ÀÀÆ÷ event ¶ÔÏóËù°üº¬µÄ·½·¨ºÍÊôÐÔ¶¼»ù±¾Ò»ÖÂ¡£²»Í¬µÄÊÇ React.js ÖÐµÄ event ¶ÔÏó²¢²»ÊÇä¯ÀÀÆ÷Ìá¹©µÄ£¬¶øÊÇËü×Ô¼ºÄÚ²¿Ëù¹¹½¨µÄ¡£React.js ½«ä¯ÀÀÆ÷Ô­ÉúµÄ event ¶ÔÏó·â×°ÁËÒ»ÏÂ£¬¶ÔÍâÌá¹©Í³Ò»µÄ API ºÍÊôÐÔ£¬ÕâÑùÄã¾Í²»ÓÃ¿¼ÂÇ²»Í¬ä¯ÀÀÆ÷µÄ¼æÈÝÐÔÎÊÌâ¡£Õâ¸ö event ¶ÔÏóÊÇ·ûºÏ W3C ±ê×¼£¨ W3C UI Events £©µÄ£¬Ëü¾ßÓÐÀàËÆÓÚevent.stopPropagation¡¢event.preventDefault ÕâÖÖ³£ÓÃµÄ·½·¨¡£
+eventï¼šå’Œæ™®é€šæµè§ˆå™¨ä¸€æ ·ï¼Œäº‹ä»¶ç›‘å¬å‡½æ•°ä¼šè¢«è‡ªåŠ¨ä¼ å…¥ä¸€ä¸ª event å¯¹è±¡ï¼Œè¿™ä¸ªå¯¹è±¡å’Œæ™®é€šçš„æµè§ˆå™¨ event å¯¹è±¡æ‰€åŒ…å«çš„æ–¹æ³•å’Œå±žæ€§éƒ½åŸºæœ¬ä¸€è‡´ã€‚ä¸åŒçš„æ˜¯ React.js ä¸­çš„ event å¯¹è±¡å¹¶ä¸æ˜¯æµè§ˆå™¨æä¾›çš„ï¼Œè€Œæ˜¯å®ƒè‡ªå·±å†…éƒ¨æ‰€æž„å»ºçš„ã€‚React.js å°†æµè§ˆå™¨åŽŸç”Ÿçš„ event å¯¹è±¡å°è£…äº†ä¸€ä¸‹ï¼Œå¯¹å¤–æä¾›ç»Ÿä¸€çš„ API å’Œå±žæ€§ï¼Œè¿™æ ·ä½ å°±ä¸ç”¨è€ƒè™‘ä¸åŒæµè§ˆå™¨çš„å…¼å®¹æ€§é—®é¢˜ã€‚è¿™ä¸ª event å¯¹è±¡æ˜¯ç¬¦åˆ W3C æ ‡å‡†ï¼ˆ W3C UI Events ï¼‰çš„ï¼Œå®ƒå…·æœ‰ç±»ä¼¼äºŽevent.stopPropagationã€event.preventDefault è¿™ç§å¸¸ç”¨çš„æ–¹æ³•ã€‚
 
-this£º React.js µ÷ÓÃÄãËù´«¸øËüµÄ·½·¨µÄÊ±ºò£¬²¢²»ÊÇÍ¨¹ý¶ÔÏó·½·¨µÄ·½Ê½µ÷ÓÃ£¬¶øÊÇÖ±½ÓÍ¨¹ýº¯Êýµ÷ÓÃ£¬ËùÒÔÊÂ¼þ¼àÌýº¯ÊýÄÚ²¢²»ÄÜÍ¨¹ý this »ñÈ¡µ½ÊµÀý£¨·µ»Ønull/undefined£©¡£Èç¹ûÄãÏëÔÚÊÂ¼þº¯Êýµ±ÖÐÊ¹ÓÃµ±Ç°µÄÊµÀý£¬ÄãÐèÒªÊÖ¶¯µØ½«ÊµÀý·½·¨ bind µ½µ±Ç°ÊµÀýÉÏÔÙ´«Èë¸ø React.js¡£-- {this.handleClickOnTitle.bind(this, 'Hello')}
+thisï¼š React.js è°ƒç”¨ä½ æ‰€ä¼ ç»™å®ƒçš„æ–¹æ³•çš„æ—¶å€™ï¼Œå¹¶ä¸æ˜¯é€šè¿‡å¯¹è±¡æ–¹æ³•çš„æ–¹å¼è°ƒç”¨ï¼Œè€Œæ˜¯ç›´æŽ¥é€šè¿‡å‡½æ•°è°ƒç”¨ï¼Œæ‰€ä»¥äº‹ä»¶ç›‘å¬å‡½æ•°å†…å¹¶ä¸èƒ½é€šè¿‡ this èŽ·å–åˆ°å®žä¾‹ï¼ˆè¿”å›žnull/undefinedï¼‰ã€‚å¦‚æžœä½ æƒ³åœ¨äº‹ä»¶å‡½æ•°å½“ä¸­ä½¿ç”¨å½“å‰çš„å®žä¾‹ï¼Œä½ éœ€è¦æ‰‹åŠ¨åœ°å°†å®žä¾‹æ–¹æ³• bind åˆ°å½“å‰å®žä¾‹ä¸Šå†ä¼ å…¥ç»™ React.jsã€‚-- {this.handleClickOnTitle.bind(this, 'Hello')}
 
-this£ºhttps://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/this
-bind£ºhttps://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Function/bind
+thisï¼šhttps://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/this
+bindï¼šhttps://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Function/bind
 ------------------------------------------------------------------------------------------------------------
 
-3. ×é¼þµÄstateºÍsetState
+3. ç»„ä»¶çš„stateå’ŒsetState
 
-setState ·½·¨ÓÉ¸¸Àà Component ËùÌá¹©¡£µ±ÎÒÃÇµ÷ÓÃÕâ¸öº¯ÊýµÄÊ±ºò£¬React.js »á¸üÐÂ×é¼þµÄ×´Ì¬ state £¬²¢ÇÒÖØÐÂµ÷ÓÃ render ·½·¨£¬È»ºóÔÙ°Ñ render ·½·¨ËùäÖÈ¾µÄ×îÐÂµÄÄÚÈÝÏÔÊ¾µ½Ò³ÃæÉÏ¡£
+setState æ–¹æ³•ç”±çˆ¶ç±» Component æ‰€æä¾›ã€‚å½“æˆ‘ä»¬è°ƒç”¨è¿™ä¸ªå‡½æ•°çš„æ—¶å€™ï¼ŒReact.js ä¼šæ›´æ–°ç»„ä»¶çš„çŠ¶æ€ state ï¼Œå¹¶ä¸”é‡æ–°è°ƒç”¨ render æ–¹æ³•ï¼Œç„¶åŽå†æŠŠ render æ–¹æ³•æ‰€æ¸²æŸ“çš„æœ€æ–°çš„å†…å®¹æ˜¾ç¤ºåˆ°é¡µé¢ä¸Šã€‚
 
-Ò»¶¨ÒªÊ¹ÓÃ React.js Ìá¹©µÄ setState ·½·¨ÐÞ¸Ä×é¼þ×´Ì¬£¬Ëü½ÓÊÜÒ»¸ö¶ÔÏó»òÕßº¯Êý×÷Îª²ÎÊý¡£
+ä¸€å®šè¦ä½¿ç”¨ React.js æä¾›çš„ setState æ–¹æ³•ä¿®æ”¹ç»„ä»¶çŠ¶æ€ï¼Œå®ƒæŽ¥å—ä¸€ä¸ªå¯¹è±¡æˆ–è€…å‡½æ•°ä½œä¸ºå‚æ•°ã€‚
 
-µ±Äãµ÷ÓÃ setState µÄÊ±ºò£¬React.js ²¢²»»áÂíÉÏÐÞ¸Ä state¡£¶øÊÇ°ÑÕâ¸ö¶ÔÏó·Åµ½Ò»¸ö¸üÐÂ¶ÓÁÐÀïÃæ£¬ÉÔºó²Å»á´Ó¶ÓÁÐµ±ÖÐ°ÑÐÂµÄ×´Ì¬ÌáÈ¡³öÀ´ºÏ²¢µ½ state µ±ÖÐ£¬È»ºóÔÙ´¥·¢×é¼þ¸üÐÂ¡£ÕâÒ»µãÒªºÃºÃ×¢Òâ¡£
+å½“ä½ è°ƒç”¨ setState çš„æ—¶å€™ï¼ŒReact.js å¹¶ä¸ä¼šé©¬ä¸Šä¿®æ”¹ stateã€‚è€Œæ˜¯æŠŠè¿™ä¸ªå¯¹è±¡æ”¾åˆ°ä¸€ä¸ªæ›´æ–°é˜Ÿåˆ—é‡Œé¢ï¼Œç¨åŽæ‰ä¼šä»Žé˜Ÿåˆ—å½“ä¸­æŠŠæ–°çš„çŠ¶æ€æå–å‡ºæ¥åˆå¹¶åˆ° state å½“ä¸­ï¼Œç„¶åŽå†è§¦å‘ç»„ä»¶æ›´æ–°ã€‚è¿™ä¸€ç‚¹è¦å¥½å¥½æ³¨æ„ã€‚
 
   handleClickOnLikeButton () {
-    this.setState({ count: 0 }) // => this.state.count »¹ÊÇ undefined
+    this.setState({ count: 0 }) // => this.state.count è¿˜æ˜¯ undefined
     this.setState({ count: this.state.count + 1}) // => undefined + 1 = NaN
     this.setState({ count: this.state.count + 2}) // => NaN + 2 = NaN
   }
 
-½ÓÊÜÒ»¸öº¯Êý×÷Îª²ÎÊýÊ±£¬React.js »á°ÑÉÏÒ»¸ö setState µÄ½á¹û´«ÈëÕâ¸öº¯Êý£¬Äã¾Í¿ÉÒÔÊ¹ÓÃ¸Ã½á¹û½øÐÐÔËËã¡¢²Ù×÷£¬È»ºó·µ»ØÒ»¸ö¶ÔÏó×÷Îª¸üÐÂ state µÄ¶ÔÏó£¬ÕâÑù¾Í¿ÉÒÔ´ïµ½ÉÏÊöµÄÀûÓÃÉÏÒ»´Î setState ½á¹û½øÐÐÔËËãµÄÐ§¹û£º
+æŽ¥å—ä¸€ä¸ªå‡½æ•°ä½œä¸ºå‚æ•°æ—¶ï¼ŒReact.js ä¼šæŠŠä¸Šä¸€ä¸ª setState çš„ç»“æžœä¼ å…¥è¿™ä¸ªå‡½æ•°ï¼Œä½ å°±å¯ä»¥ä½¿ç”¨è¯¥ç»“æžœè¿›è¡Œè¿ç®—ã€æ“ä½œï¼Œç„¶åŽè¿”å›žä¸€ä¸ªå¯¹è±¡ä½œä¸ºæ›´æ–° state çš„å¯¹è±¡ï¼Œè¿™æ ·å°±å¯ä»¥è¾¾åˆ°ä¸Šè¿°çš„åˆ©ç”¨ä¸Šä¸€æ¬¡ setState ç»“æžœè¿›è¡Œè¿ç®—çš„æ•ˆæžœï¼š
   handleClickOnLikeButton () {
     this.setState((prevState) => {
       return { count: 0 }
     })
     this.setState((prevState) => {
-      return { count: prevState.count + 1 } // ÉÏÒ»¸ö setState µÄ·µ»ØÊÇ count Îª 0£¬µ±Ç°·µ»Ø 1
+      return { count: prevState.count + 1 } // ä¸Šä¸€ä¸ª setState çš„è¿”å›žæ˜¯ count ä¸º 0ï¼Œå½“å‰è¿”å›ž 1
     })
     this.setState((prevState) => {
-      return { count: prevState.count + 2 } // ÉÏÒ»¸ö setState µÄ·µ»ØÊÇ count Îª 1£¬µ±Ç°·µ»Ø 3
+      return { count: prevState.count + 2 } // ä¸Šä¸€ä¸ª setState çš„è¿”å›žæ˜¯ count ä¸º 1ï¼Œå½“å‰è¿”å›ž 3
     })
-    // ×îºóµÄ½á¹ûÊÇ this.state.count Îª 3
+    // æœ€åŽçš„ç»“æžœæ˜¯ this.state.count ä¸º 3
   }
 
-setStateºÏ²¢£º ÉÏÃæÎÒÃÇ½øÐÐÁËÈý´Î setState£¬µ«ÊÇÊµ¼ÊÉÏ×é¼þÖ»»áÖØÐÂäÖÈ¾Ò»´Î£¬¶ø²»ÊÇÈý´Î£»ÕâÊÇÒòÎªÔÚ React.js ÄÚ²¿»á°Ñ JavaScript ÊÂ¼þÑ­»·ÖÐµÄÏûÏ¢¶ÓÁÐµÄÍ¬Ò»¸öÏûÏ¢ÖÐµÄ setState ¶¼½øÐÐºÏ²¢ÒÔºóÔÙÖØÐÂäÖÈ¾×é¼þ¡£
+setStateåˆå¹¶ï¼š ä¸Šé¢æˆ‘ä»¬è¿›è¡Œäº†ä¸‰æ¬¡ setStateï¼Œä½†æ˜¯å®žé™…ä¸Šç»„ä»¶åªä¼šé‡æ–°æ¸²æŸ“ä¸€æ¬¡ï¼Œè€Œä¸æ˜¯ä¸‰æ¬¡ï¼›è¿™æ˜¯å› ä¸ºåœ¨ React.js å†…éƒ¨ä¼šæŠŠ JavaScript äº‹ä»¶å¾ªçŽ¯ä¸­çš„æ¶ˆæ¯é˜Ÿåˆ—çš„åŒä¸€ä¸ªæ¶ˆæ¯ä¸­çš„ setState éƒ½è¿›è¡Œåˆå¹¶ä»¥åŽå†é‡æ–°æ¸²æŸ“ç»„ä»¶ã€‚
 ---------------------------------------------------------------------------------------------------------
 4. props
 
-ÎªÁËÊ¹µÃ×é¼þµÄ¿É¶¨ÖÆÐÔ¸üÇ¿£¬ÔÚÊ¹ÓÃ×é¼þµÄÊ±ºò£¬¿ÉÒÔÔÚ±êÇ©ÉÏ¼ÓÊôÐÔÀ´´«ÈëÅäÖÃ²ÎÊý¡£JSX±í´ïÊ½²åÈë¿ÉÒÔÔÚ±êÇ©ÊôÐÔÉÏÊ¹ÓÃ£¬ËùÒÔÈÎºÎÀàÐÍµÄÊý¾Ý¶¼¿ÉÒÔ×÷Îª×é¼þµÄ²ÎÊý¡£
+ä¸ºäº†ä½¿å¾—ç»„ä»¶çš„å¯å®šåˆ¶æ€§æ›´å¼ºï¼Œåœ¨ä½¿ç”¨ç»„ä»¶çš„æ—¶å€™ï¼Œå¯ä»¥åœ¨æ ‡ç­¾ä¸ŠåŠ å±žæ€§æ¥ä¼ å…¥é…ç½®å‚æ•°ã€‚JSXè¡¨è¾¾å¼æ’å…¥å¯ä»¥åœ¨æ ‡ç­¾å±žæ€§ä¸Šä½¿ç”¨ï¼Œæ‰€ä»¥ä»»ä½•ç±»åž‹çš„æ•°æ®éƒ½å¯ä»¥ä½œä¸ºç»„ä»¶çš„å‚æ•°ã€‚
 
-×é¼þ¿ÉÒÔÔÚÄÚ²¿Í¨¹ý this.props »ñÈ¡µ½ÅäÖÃ²ÎÊý£¬×é¼þ¿ÉÒÔ¸ù¾Ý props µÄ²»Í¬À´È·¶¨×Ô¼ºµÄÏÔÊ¾ÐÎÌ¬£¬´ïµ½¿ÉÅäÖÃµÄÐ§¹û¡£
+ç»„ä»¶å¯ä»¥åœ¨å†…éƒ¨é€šè¿‡ this.props èŽ·å–åˆ°é…ç½®å‚æ•°ï¼Œç»„ä»¶å¯ä»¥æ ¹æ® props çš„ä¸åŒæ¥ç¡®å®šè‡ªå·±çš„æ˜¾ç¤ºå½¢æ€ï¼Œè¾¾åˆ°å¯é…ç½®çš„æ•ˆæžœã€‚
 
-¿ÉÒÔÍ¨¹ý¸ø×é¼þÌí¼ÓÀàÊôÐÔ defaultProps À´ÅäÖÃÄ¬ÈÏ²ÎÊý¡£
+å¯ä»¥é€šè¿‡ç»™ç»„ä»¶æ·»åŠ ç±»å±žæ€§ defaultProps æ¥é…ç½®é»˜è®¤å‚æ•°ã€‚
 
-props²»¿É±ä this.props.likedText = 'È¡Ïû'ÕâÖÖÓï·¨±¨´í¡£Èç¹û props äÖÈ¾¹ý³ÌÖÐ¿ÉÒÔ±»ÐÞ¸Ä£¬ÄÇÃ´¾Í»áµ¼ÖÂÕâ¸ö×é¼þÏÔÊ¾ÐÎÌ¬ºÍÐÐÎª±äµÃ²»¿ÉÔ¤²â£¬ÕâÑù»á¿ÉÄÜ»á¸ø×é¼þÊ¹ÓÃÕß´øÀ´À§»ó¡£
-µ«Õâ²¢²»ÒâÎ¶×ÅÓÉ props ¾ö¶¨µÄÏÔÊ¾ÐÎÌ¬²»ÄÜ±»ÐÞ¸Ä¡£×é¼þµÄÊ¹ÓÃÕß¿ÉÒÔÖ÷¶¯µØÍ¨¹ýÖØÐÂäÖÈ¾µÄ·½Ê½°ÑÐÂµÄ props ´«Èë×é¼þµ±ÖÐ£¬ÕâÑùÕâ¸ö×é¼þÖÐÓÉ props ¾ö¶¨µÄÏÔÊ¾ÐÎÌ¬Ò²»áµÃµ½ÏàÓ¦µÄ¸Ä±ä¡£
+propsä¸å¯å˜ this.props.likedText = 'å–æ¶ˆ'è¿™ç§è¯­æ³•æŠ¥é”™ã€‚å¦‚æžœ props æ¸²æŸ“è¿‡ç¨‹ä¸­å¯ä»¥è¢«ä¿®æ”¹ï¼Œé‚£ä¹ˆå°±ä¼šå¯¼è‡´è¿™ä¸ªç»„ä»¶æ˜¾ç¤ºå½¢æ€å’Œè¡Œä¸ºå˜å¾—ä¸å¯é¢„æµ‹ï¼Œè¿™æ ·ä¼šå¯èƒ½ä¼šç»™ç»„ä»¶ä½¿ç”¨è€…å¸¦æ¥å›°æƒ‘ã€‚
+ä½†è¿™å¹¶ä¸æ„å‘³ç€ç”± props å†³å®šçš„æ˜¾ç¤ºå½¢æ€ä¸èƒ½è¢«ä¿®æ”¹ã€‚ç»„ä»¶çš„ä½¿ç”¨è€…å¯ä»¥ä¸»åŠ¨åœ°é€šè¿‡é‡æ–°æ¸²æŸ“çš„æ–¹å¼æŠŠæ–°çš„ props ä¼ å…¥ç»„ä»¶å½“ä¸­ï¼Œè¿™æ ·è¿™ä¸ªç»„ä»¶ä¸­ç”± props å†³å®šçš„æ˜¾ç¤ºå½¢æ€ä¹Ÿä¼šå¾—åˆ°ç›¸åº”çš„æ”¹å˜ã€‚
 ------------------------------------------------------------------------------------------------------------
 
-5. state Óë props
+5. state ä¸Ž props
 
-state ºÍ props ÓÐ×ÅÇ§Ë¿ÍòÂÆµÄ¹ØÏµ¡£ËüÃÇ¶¼¿ÉÒÔ¾ö¶¨×é¼þµÄÐÐÎªºÍÏÔÊ¾ÐÎÌ¬¡£Ò»¸ö×é¼þµÄ state ÖÐµÄÊý¾Ý¿ÉÒÔÍ¨¹ý props ´«¸ø×Ó×é¼þ£¬Ò»¸ö×é¼þ¿ÉÒÔÊ¹ÓÃÍâ²¿´«ÈëµÄ props À´³õÊ¼»¯×Ô¼ºµÄ state¡£µ«ÊÇËüÃÇµÄÖ°ÔðÆäÊµ·Ç³£Ã÷Îú·ÖÃ÷£ºstate ÊÇÈÃ×é¼þ¿ØÖÆ×Ô¼ºµÄ×´Ì¬£¬props ÊÇÈÃÍâ²¿¶Ô×é¼þ×Ô¼º½øÐÐÅäÖÃ¡£
+state å’Œ props æœ‰ç€åƒä¸ä¸‡ç¼•çš„å…³ç³»ã€‚å®ƒä»¬éƒ½å¯ä»¥å†³å®šç»„ä»¶çš„è¡Œä¸ºå’Œæ˜¾ç¤ºå½¢æ€ã€‚ä¸€ä¸ªç»„ä»¶çš„ state ä¸­çš„æ•°æ®å¯ä»¥é€šè¿‡ props ä¼ ç»™å­ç»„ä»¶ï¼Œä¸€ä¸ªç»„ä»¶å¯ä»¥ä½¿ç”¨å¤–éƒ¨ä¼ å…¥çš„ props æ¥åˆå§‹åŒ–è‡ªå·±çš„ stateã€‚ä½†æ˜¯å®ƒä»¬çš„èŒè´£å…¶å®žéžå¸¸æ˜Žæ™°åˆ†æ˜Žï¼šstate æ˜¯è®©ç»„ä»¶æŽ§åˆ¶è‡ªå·±çš„çŠ¶æ€ï¼Œprops æ˜¯è®©å¤–éƒ¨å¯¹ç»„ä»¶è‡ªå·±è¿›è¡Œé…ç½®ã€‚
 
-Èç¹ûÄã¾õµÃ»¹ÊÇ¸ã²»Çå state ºÍ props µÄÊ¹ÓÃ³¡¾°£¬ÄÇÃ´Çë¼Ç×¡Ò»¸ö¼òµ¥µÄ¹æÔò£º¾¡Á¿ÉÙµØÓÃ state£¬¾¡Á¿¶àµØÓÃ props¡£
+å¦‚æžœä½ è§‰å¾—è¿˜æ˜¯æžä¸æ¸… state å’Œ props çš„ä½¿ç”¨åœºæ™¯ï¼Œé‚£ä¹ˆè¯·è®°ä½ä¸€ä¸ªç®€å•çš„è§„åˆ™ï¼šå°½é‡å°‘åœ°ç”¨ stateï¼Œå°½é‡å¤šåœ°ç”¨ propsã€‚
 
-Ã»ÓÐ state µÄ×é¼þ½ÐÎÞ×´Ì¬×é¼þ£¨stateless component£©£¬ÉèÖÃÁË state µÄ½Ð×öÓÐ×´Ì¬×é¼þ£¨stateful component£©¡£ÒòÎª×´Ì¬»á´øÀ´¹ÜÀíµÄ¸´ÔÓÐÔ£¬ÎÒÃÇ¾¡Á¿¶àµØÐ´ÎÞ×´Ì¬×é¼þ£¬¾¡Á¿ÉÙµØÐ´ÓÐ×´Ì¬µÄ×é¼þ¡£
+æ²¡æœ‰ state çš„ç»„ä»¶å«æ— çŠ¶æ€ç»„ä»¶ï¼ˆstateless componentï¼‰ï¼Œè®¾ç½®äº† state çš„å«åšæœ‰çŠ¶æ€ç»„ä»¶ï¼ˆstateful componentï¼‰ã€‚å› ä¸ºçŠ¶æ€ä¼šå¸¦æ¥ç®¡ç†çš„å¤æ‚æ€§ï¼Œæˆ‘ä»¬å°½é‡å¤šåœ°å†™æ— çŠ¶æ€ç»„ä»¶ï¼Œå°½é‡å°‘åœ°å†™æœ‰çŠ¶æ€çš„ç»„ä»¶ã€‚
 
-React.js ·Ç³£¹ÄÀøÎÞ×´Ì¬×é¼þ£¬ÔÚ 0.14 °æ±¾ÒýÈëÁËº¯ÊýÊ½×é¼þ¡ª¡ªÒ»ÖÖ¶¨Òå²»ÄÜÊ¹ÓÃ state ×é¼þ£¬ÀýÈçÒ»¸öÔ­À´ÕâÑùÐ´µÄ×é¼þ£º
+React.js éžå¸¸é¼“åŠ±æ— çŠ¶æ€ç»„ä»¶ï¼Œåœ¨ 0.14 ç‰ˆæœ¬å¼•å…¥äº†å‡½æ•°å¼ç»„ä»¶â€”â€”ä¸€ç§å®šä¹‰ä¸èƒ½ä½¿ç”¨ state ç»„ä»¶ï¼Œä¾‹å¦‚ä¸€ä¸ªåŽŸæ¥è¿™æ ·å†™çš„ç»„ä»¶ï¼š
 
-º¯ÊýÊ½×é¼þ±à³Ì·½Ê½£º ÒÔÇ°Ò»¸ö×é¼þÊÇÍ¨¹ý¼Ì³Ð Component À´¹¹½¨£¬Ò»¸ö×ÓÀà¾ÍÊÇÒ»¸ö×é¼þ¡£¶øÓÃº¯ÊýÊ½µÄ×é¼þ±àÐ´·½Ê½ÊÇÒ»¸öº¯Êý¾ÍÊÇÒ»¸ö×é¼þ¡£²»Í¬µÄÊÇ£¬º¯ÊýÊ½×é¼þÖ»ÄÜ½ÓÊÜ props ¶øÎÞ·¨Ïñ¸úÀà×é¼þÒ»Ñù¿ÉÒÔÔÚ constructor ÀïÃæ³õÊ¼»¯ state¡£Äã¿ÉÒÔÀí½âº¯ÊýÊ½×é¼þ¾ÍÊÇÒ»ÖÖÖ»ÄÜ½ÓÊÜ props ºÍÌá¹© render ·½·¨µÄÀà×é¼þ¡£
+å‡½æ•°å¼ç»„ä»¶ç¼–ç¨‹æ–¹å¼ï¼š ä»¥å‰ä¸€ä¸ªç»„ä»¶æ˜¯é€šè¿‡ç»§æ‰¿ Component æ¥æž„å»ºï¼Œä¸€ä¸ªå­ç±»å°±æ˜¯ä¸€ä¸ªç»„ä»¶ã€‚è€Œç”¨å‡½æ•°å¼çš„ç»„ä»¶ç¼–å†™æ–¹å¼æ˜¯ä¸€ä¸ªå‡½æ•°å°±æ˜¯ä¸€ä¸ªç»„ä»¶ã€‚ä¸åŒçš„æ˜¯ï¼Œå‡½æ•°å¼ç»„ä»¶åªèƒ½æŽ¥å— props è€Œæ— æ³•åƒè·Ÿç±»ç»„ä»¶ä¸€æ ·å¯ä»¥åœ¨ constructor é‡Œé¢åˆå§‹åŒ– stateã€‚ä½ å¯ä»¥ç†è§£å‡½æ•°å¼ç»„ä»¶å°±æ˜¯ä¸€ç§åªèƒ½æŽ¥å— props å’Œæä¾› render æ–¹æ³•çš„ç±»ç»„ä»¶ã€‚
 
 const HelloWorld = (props) => {
   const sayHi = (event) => alert('Hello World')
@@ -89,7 +89,7 @@ const HelloWorld = (props) => {
   )
 }
 
-¡¶==¡·
+ã€Š==ã€‹
 
 class HelloWorld extends Component {
   constructor() {
@@ -108,11 +108,11 @@ class HelloWorld extends Component {
 }
 ------------------------------------------------------------------------------------------------------------
 
-6. äÖÈ¾ÁÐ±íÊý¾Ý
+6. æ¸²æŸ“åˆ—è¡¨æ•°æ®
 
-äÖÈ¾´æ·Å JSX ÔªËØµÄÊý×é: Èç¹ûÄãÍù {} ·ÅÒ»¸öÊý×é£¬React.js »á°ïÄã°ÑÊý×éÀïÃæÒ»¸ö¸öÔªËØÂÞÁÐ²¢ÇÒäÖÈ¾³öÀ´¡£
+æ¸²æŸ“å­˜æ”¾ JSX å…ƒç´ çš„æ•°ç»„: å¦‚æžœä½ å¾€ {} æ”¾ä¸€ä¸ªæ•°ç»„ï¼ŒReact.js ä¼šå¸®ä½ æŠŠæ•°ç»„é‡Œé¢ä¸€ä¸ªä¸ªå…ƒç´ ç½—åˆ—å¹¶ä¸”æ¸²æŸ“å‡ºæ¥ã€‚
 
-Ê¹ÓÃ map äÖÈ¾ÁÐ±íÊý¾Ý: ¶ÔÓÚÓÃ±í´ïÊ½Ì×Êý×éÂÞÁÐµ½Ò³ÃæÉÏµÄÔªËØ£¬¶¼ÒªÎªÃ¿¸öÔªËØ¼ÓÉÏ key ÊôÐÔ£¬Õâ¸ö key ±ØÐëÊÇÃ¿¸öÔªËØÎ¨Ò»µÄ±êÊ¶¡£ÔÚÊµ¼ÊÏîÄ¿µ±ÖÐ£¬Èç¹ûÄãµÄÊý¾ÝË³Ðò¿ÉÄÜ·¢Éú±ä»¯£¬±ê×¼×ö·¨ÊÇ×îºÃÊÇºóÌ¨Êý¾Ý·µ»ØµÄ id ×÷ÎªÁÐ±íÔªËØµÄ key¡£
+ä½¿ç”¨ map æ¸²æŸ“åˆ—è¡¨æ•°æ®: å¯¹äºŽç”¨è¡¨è¾¾å¼å¥—æ•°ç»„ç½—åˆ—åˆ°é¡µé¢ä¸Šçš„å…ƒç´ ï¼Œéƒ½è¦ä¸ºæ¯ä¸ªå…ƒç´ åŠ ä¸Š key å±žæ€§ï¼Œè¿™ä¸ª key å¿…é¡»æ˜¯æ¯ä¸ªå…ƒç´ å”¯ä¸€çš„æ ‡è¯†ã€‚åœ¨å®žé™…é¡¹ç›®å½“ä¸­ï¼Œå¦‚æžœä½ çš„æ•°æ®é¡ºåºå¯èƒ½å‘ç”Ÿå˜åŒ–ï¼Œæ ‡å‡†åšæ³•æ˜¯æœ€å¥½æ˜¯åŽå°æ•°æ®è¿”å›žçš„ id ä½œä¸ºåˆ—è¡¨å…ƒç´ çš„ keyã€‚
 
 const users = [
   { username: 'Jerry', age: 21, gender: 'male' },
@@ -126,9 +126,9 @@ class User extends Component {
     const { user } = this.props
     return (
       <div>
-        <div>ÐÕÃû£º{user.username}</div>
-        <div>ÄêÁä£º{user.age}</div>
-        <div>ÐÔ±ð£º{user.gender}</div>
+        <div>å§“åï¼š{user.username}</div>
+        <div>å¹´é¾„ï¼š{user.age}</div>
+        <div>æ€§åˆ«ï¼š{user.gender}</div>
         <hr />
       </div>
     )
@@ -178,23 +178,33 @@ class CommentApp extends Component{
 }
 
 
-ÕâÀïµÄ´úÂëÖ±½ÓÍù state.comments Êý×éÀïÃæ²åÈëÊý¾ÝÆäÊµÎ¥·´ÁË React.js µÄ state ²»¿ÉÖ±½ÓÐÞ¸ÄµÄÔ­Ôò ¡£µ«ÆäÊµÕâ¸öÔ­ÔòÊÇÎªÁË shouldComponentUpdate µÄÓÅ»¯ºÍ±ä»¯µÄ¸ú×Ù£¬¶øÕâÖÖÄ¿µÄÔÚÊ¹ÓÃ React-redux µÄÊ±ºòÆäÊµ»á×ÔÈ»¶øÈ»´ïµ½£¬ÎÒÃÇºÜÉÙÖ±½ÓÊÖ¶¯µØÓÅ»¯£¬ÕâÊ±ºòÕâ¸öÔ­Ôò¾Í»áÏÔµÃÓÐµã¼¦Àß¡£ËùÒÔÕâÀïÎªÁË½µµÍ´ó¼ÒµÄÀí½â³É±¾¾Í²»Ç¿ÖÆÊ¹ÓÃÕâ¸öÔ­Ôò£¬ÓÐÐËÈ¤µÄÅóÓÑ¿ÉÒÔ²Î¿¼£º
+è¿™é‡Œçš„ä»£ç ç›´æŽ¥å¾€ state.comments æ•°ç»„é‡Œé¢æ’å…¥æ•°æ®å…¶å®žè¿åäº† React.js çš„ state ä¸å¯ç›´æŽ¥ä¿®æ”¹çš„åŽŸåˆ™ ã€‚ä½†å…¶å®žè¿™ä¸ªåŽŸåˆ™æ˜¯ä¸ºäº† shouldComponentUpdate çš„ä¼˜åŒ–å’Œå˜åŒ–çš„è·Ÿè¸ªï¼Œè€Œè¿™ç§ç›®çš„åœ¨ä½¿ç”¨ React-redux çš„æ—¶å€™å…¶å®žä¼šè‡ªç„¶è€Œç„¶è¾¾åˆ°ï¼Œæˆ‘ä»¬å¾ˆå°‘ç›´æŽ¥æ‰‹åŠ¨åœ°ä¼˜åŒ–ï¼Œè¿™æ—¶å€™è¿™ä¸ªåŽŸåˆ™å°±ä¼šæ˜¾å¾—æœ‰ç‚¹é¸¡è‚‹ã€‚æ‰€ä»¥è¿™é‡Œä¸ºäº†é™ä½Žå¤§å®¶çš„ç†è§£æˆæœ¬å°±ä¸å¼ºåˆ¶ä½¿ç”¨è¿™ä¸ªåŽŸåˆ™ï¼Œæœ‰å…´è¶£çš„æœ‹å‹å¯ä»¥å‚è€ƒï¼š
 https://facebook.github.io/react/tutorial/tutorial.html#why-immutability-is-important
 ---------------------------------------------------------------------------------------------------------------
 
-Ç°¶ËÓ¦ÓÃ×´Ì¬¹ÜÀí ¡ª¡ª ×´Ì¬ÌáÉý
+å‰ç«¯åº”ç”¨çŠ¶æ€ç®¡ç† â€”â€” çŠ¶æ€æå‡
 
-µ±Ä³¸ö×´Ì¬±»¶à¸ö×é¼þÒÀÀµ»òÕßÓ°ÏìµÄÊ±ºò£¬¾Í°Ñ¸Ã×´Ì¬ÌáÉýµ½ÕâÐ©×é¼þµÄ×î½ü¹«¹²¸¸×é¼þÖÐÈ¥¹ÜÀí£¬ÓÃ props ´«µÝÊý¾Ý»òÕßº¯ÊýÀ´¹ÜÀíÕâÖÖÒÀÀµ»ò×ÅÓ°ÏìµÄÐÐÎª¡£
+å½“æŸä¸ªçŠ¶æ€è¢«å¤šä¸ªç»„ä»¶ä¾èµ–æˆ–è€…å½±å“çš„æ—¶å€™ï¼Œå°±æŠŠè¯¥çŠ¶æ€æå‡åˆ°è¿™äº›ç»„ä»¶çš„æœ€è¿‘å…¬å…±çˆ¶ç»„ä»¶ä¸­åŽ»ç®¡ç†ï¼Œç”¨ props ä¼ é€’æ•°æ®æˆ–è€…å‡½æ•°æ¥ç®¡ç†è¿™ç§ä¾èµ–æˆ–ç€å½±å“çš„è¡Œä¸ºã€‚
 
-Äã»á·¢ÏÖÕâÖÖÎÞÏÞÖÆµÄÌáÉý²»ÊÇÒ»¸öºÃµÄ½â¾ö·½°¸¡£Ò»µ©·¢ÉúÁËÌáÉý£¬Äã¾ÍÐèÒªÐÞ¸ÄÔ­À´±£´æÕâ¸ö×´Ì¬µÄ×é¼þµÄ´úÂë£¬Ò²Òª°ÑÕû¸öÊý¾Ý´«µÝÂ·¾¶¾­¹ýµÄ×é¼þ¶¼ÐÞ¸ÄÒ»±é£¬ºÃÈÃÊý¾ÝÄÜ¹»Ò»²ã²ãµØ´«µÝÏÂÈ¥¡£ÕâÑù¶Ô´úÂëµÄ×éÖ¯¹ÜÀíÎ¬»¤´øÀ´ºÜ´óµÄÎÊÌâ¡£µ½ÕâÀïÄã¿ÉÒÔ³éÏóÒ»ÏÂÎÊÌâ£º
+ä½ ä¼šå‘çŽ°è¿™ç§æ— é™åˆ¶çš„æå‡ä¸æ˜¯ä¸€ä¸ªå¥½çš„è§£å†³æ–¹æ¡ˆã€‚ä¸€æ—¦å‘ç”Ÿäº†æå‡ï¼Œä½ å°±éœ€è¦ä¿®æ”¹åŽŸæ¥ä¿å­˜è¿™ä¸ªçŠ¶æ€çš„ç»„ä»¶çš„ä»£ç ï¼Œä¹Ÿè¦æŠŠæ•´ä¸ªæ•°æ®ä¼ é€’è·¯å¾„ç»è¿‡çš„ç»„ä»¶éƒ½ä¿®æ”¹ä¸€éï¼Œå¥½è®©æ•°æ®èƒ½å¤Ÿä¸€å±‚å±‚åœ°ä¼ é€’ä¸‹åŽ»ã€‚è¿™æ ·å¯¹ä»£ç çš„ç»„ç»‡ç®¡ç†ç»´æŠ¤å¸¦æ¥å¾ˆå¤§çš„é—®é¢˜ã€‚åˆ°è¿™é‡Œä½ å¯ä»¥æŠ½è±¡ä¸€ä¸‹é—®é¢˜ï¼š
 
-    ÈçºÎ¸üºÃµÄ¹ÜÀíÕâÖÖ±»¶à¸ö×é¼þËùÒÀÀµ»òÓ°ÏìµÄ×´Ì¬£¿
+    å¦‚ä½•æ›´å¥½çš„ç®¡ç†è¿™ç§è¢«å¤šä¸ªç»„ä»¶æ‰€ä¾èµ–æˆ–å½±å“çš„çŠ¶æ€ï¼Ÿ
 
-Äã¿ÉÒÔ¿´µ½ React.js ²¢Ã»ÓÐÌá¹©ºÃµÄ½â¾ö·½°¸À´¹ÜÀíÕâÖÖ×é¼þÖ®¼äµÄ¹²Ïí×´Ì¬¡£ÔÚÊµ¼ÊÏîÄ¿µ±ÖÐ×´Ì¬ÌáÉý²¢²»ÊÇÒ»¸öºÃµÄ½â¾ö·½°¸£¬ËùÒÔÎÒÃÇºóÐø»áÒýÈë Redux ÕâÑùµÄ×´Ì¬¹ÜÀí¹¤¾ßÀ´°ïÖúÎÒÃÇÀ´¹ÜÀíÕâÖÖ¹²Ïí×´Ì¬.
+ä½ å¯ä»¥çœ‹åˆ° React.js å¹¶æ²¡æœ‰æä¾›å¥½çš„è§£å†³æ–¹æ¡ˆæ¥ç®¡ç†è¿™ç§ç»„ä»¶ä¹‹é—´çš„å…±äº«çŠ¶æ€ã€‚åœ¨å®žé™…é¡¹ç›®å½“ä¸­çŠ¶æ€æå‡å¹¶ä¸æ˜¯ä¸€ä¸ªå¥½çš„è§£å†³æ–¹æ¡ˆï¼Œæ‰€ä»¥æˆ‘ä»¬åŽç»­ä¼šå¼•å…¥ Redux è¿™æ ·çš„çŠ¶æ€ç®¡ç†å·¥å…·æ¥å¸®åŠ©æˆ‘ä»¬æ¥ç®¡ç†è¿™ç§å…±äº«çŠ¶æ€.
 ----------------------------------------------------------------------------------------------------------------
 
-¹ÒÔØ½×¶ÎµÄ×é¼þÉúÃüÖÜÆÚ
+æŒ‚è½½é˜¶æ®µçš„ç»„ä»¶ç”Ÿå‘½å‘¨æœŸ
 
- React.js ½«×é¼þäÖÈ¾£¬²¢ÇÒ¹¹Ôì DOM ÔªËØÈ»ºóÈûÈëÒ³ÃæµÄ¹ý³Ì³ÆÎª×é¼þµÄ¹ÒÔØ
+ React.js å°†ç»„ä»¶æ¸²æŸ“ï¼Œå¹¶ä¸”æž„é€  DOM å…ƒç´ ç„¶åŽå¡žå…¥é¡µé¢çš„è¿‡ç¨‹ç§°ä¸ºç»„ä»¶çš„æŒ‚è½½
 
-construct --> componentWillMount --> render --> componentDidMount
+    componentWillMountï¼šç»„ä»¶æŒ‚è½½å¼€å§‹ä¹‹å‰ï¼Œä¹Ÿå°±æ˜¯åœ¨ç»„ä»¶è°ƒç”¨ render æ–¹æ³•ä¹‹å‰è°ƒç”¨ã€‚
+    componentDidMountï¼šç»„ä»¶æŒ‚è½½å®Œæˆä»¥åŽï¼Œä¹Ÿå°±æ˜¯ DOM å…ƒç´ å·²ç»æ’å…¥é¡µé¢åŽè°ƒç”¨ã€‚
+    componentWillUnmountï¼šç»„ä»¶å¯¹åº”çš„ DOM å…ƒç´ ä»Žé¡µé¢ä¸­åˆ é™¤ä¹‹å‰è°ƒç”¨ã€‚
+
+{this.state.isShowHeader ? <Header /> : null} -- state.isShowHeader ä¸º true çš„æ—¶å€™æŠŠ Header æ’å…¥é¡µé¢ï¼Œfalse çš„æ—¶å€™æŠŠ Header ä»Žé¡µé¢ä¸Šåˆ é™¤
+
+construct --> componentWillMount --> render --> componentDidMount --> componentWillUnmount
+
+ä¸€èˆ¬æ¥è¯´ï¼Œæ‰€æœ‰å…³äºŽç»„ä»¶è‡ªèº«çš„çŠ¶æ€çš„åˆå§‹åŒ–å·¥ä½œéƒ½ä¼šæ”¾åœ¨ constructor é‡Œé¢åŽ»åšã€‚
+
+
