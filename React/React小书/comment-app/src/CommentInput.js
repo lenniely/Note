@@ -31,20 +31,28 @@ class commentInput extends Component {
 		});
 	}
 
+	handleUserNameBlur(e){
+		localStorage.setItem('username',e.target.value);
+	}
+
+	componentDidMount(){
+		this.textarea.focus();
+	}
+
 	render(){
 		return(
 			<div className='comment-input'>
 				<div className='comment-field'>
 		          <span className='comment-field-name'>用户名：</span>
 		          <div className='comment-field-input'>
-		          	<input value={this.state.username} onChange={this.handleUserNameChange.bind(this)} required />
+		          	<input value={this.state.username} onChange={this.handleUserNameChange.bind(this)} onBlur={this.handleUserNameBlur.bind(this)} required />
 		          </div>
 		        </div>
 
 		        <div className='comment-field'>
 		          <span className='comment-field-name'>评论内容：</span>
 		          <div className='comment-field-input'>
-		            <textarea value={this.state.usercomment} onChange={this.handleCommentChange.bind(this)} required/>
+		            <textarea ref={(textarea) => this.textarea = textarea} value={this.state.usercomment} onChange={this.handleCommentChange.bind(this)} required/>
 		          </div>
 				</div>
 				<div className='comment-field-button'>
