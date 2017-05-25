@@ -5,8 +5,26 @@ class commentInput extends Component {
 		super();
 		this.state ={
 			username: '',
-			usercomment: ''
+			usercomment: '',
+			createdtime: ''
 		};
+	}
+
+
+	componentWillMount(){
+		// const name = localStorage.getItem('username');
+		// this.setState({
+		// 	username: name
+		// });
+		const commentsObj = JSON.parse(localStorage.getItem('comments'));
+		const name = commentsObj[commentsObj.length-1].username;
+		this.setState({
+			username: name
+		});
+	}
+
+	componentDidMount(){
+		this.textarea.focus();
 	}
 
 	handleUserNameChange(e){
@@ -22,22 +40,24 @@ class commentInput extends Component {
 	}
 
 	handleSubmit(e){
-		const {username, usercomment} = this.state;
-		if(this.props.onSubmit){
-			this.props.onSubmit({username, usercomment});
-		}
+		// const {username, usercomment, createdtime} = this.state;
 		this.setState({
 			usercomment: ''
 		});
+		if(this.props.onSubmit){
+			this.props.onSubmit({
+				username: this.state.username, 
+				usercomment: this.state.usercomment, 
+				createdtime: +new Date()
+			});
+		}
+
 	}
 
 	handleUserNameBlur(e){
-		localStorage.setItem('username',e.target.value);
+		//localStorage.setItem('username',e.target.value);
 	}
 
-	componentDidMount(){
-		this.textarea.focus();
-	}
 
 	render(){
 		return(
