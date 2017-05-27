@@ -20,7 +20,7 @@ class Comment extends Component{
 		this.timeInterval = setInterval(this._updateTimeString.bind(this), 5000);
 	}
 
-	componentWillUnMount(){
+	componentWillUnmount(){
 		clearInterval(this.timeInterval);
 	}
 
@@ -37,13 +37,26 @@ class Comment extends Component{
 		});
 	}
 
+	_getProcessedContent(content){
+	    return content
+	    .replace(/&/g, "&amp;")
+		.replace(/</g, "&lt;")
+		.replace(/>/g, "&gt;")
+		.replace(/"/g, "&quot;")
+		.replace(/'/g, "&#039;")
+		.replace(/`([\S\s]+?)`/g, "<code>$1</code>");
+	}
+
+
 	render(){
 		return (
 			<div className='comment'>
 				<div className='comment-user'>
-					<span>{this.props.comment.username} : </span>
+					<span>{this.props.comment.username} :</span>
 				</div>
-				<p>{this.props.comment.usercomment}</p>
+				<p dangerouslySetInnerHTML={{
+					__html: this._getProcessedContent(this.props.comment.usercomment)
+					}} />
 
 				<span className='comment-createdtime'>{this.state.timeString}</span>
 				<span className='comment-delete' onClick={this.handleDelClick.bind(this)}>

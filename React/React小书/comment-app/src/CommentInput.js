@@ -17,7 +17,7 @@ class commentInput extends Component {
 		// 	username: name
 		// });
 		const commentsObj = JSON.parse(localStorage.getItem('comments'));
-		const name = commentsObj[commentsObj.length-1].username;
+		const name = commentsObj[commentsObj.length-1] ? commentsObj[commentsObj.length-1].username : '';
 		this.setState({
 			username: name
 		});
