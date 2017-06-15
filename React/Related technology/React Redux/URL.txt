@@ -1,0 +1,6 @@
+Flux: 
+http://www.ruanyifeng.com/blog/2016/01/flux.html
+http://blog.andrewray.me/flux-for-stupid-people/
+
+Controller-view
+http://blog.andrewray.me/the-reactjs-controller-view-pattern/

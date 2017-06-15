@@ -1,0 +1,6 @@
+﻿Flux - 数据单向流动
+view
+Action
+Dispatcher
+Store
+View
