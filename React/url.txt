@@ -6,7 +6,6 @@ http://andrewhfarmer.com/react-ajax-best-practices/
 
 When should I use `return` in es6 Arrow Functions? https://stackoverflow.com/questions/28889450/when-should-i-use-return-in-es6-arrow-functions
 
-
 http://cn.redux.js.org/
-
+https://www.smashingmagazine.com/2016/06/an-introduction-to-redux/
 
