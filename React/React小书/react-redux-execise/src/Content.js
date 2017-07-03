@@ -13,7 +13,9 @@ class Content extends Component {
 	}
 
 	componentWillMount(){
+		const { store } = this.context;
 		this._updateThemeColor();
+		store.subscribe(() => this._updateThemeColor());
 	}
 
 	_updateThemeColor(){
@@ -25,7 +27,7 @@ class Content extends Component {
 	render () {
 		return (
 			<div>
-				<p style={{color: this.state.themeColor}} React.js 小书内容</p>
+				<p style={{color: this.state.themeColor}}> React.js 小书内容</p>
 				<ThemeSwitch />
 			</div>
 		);

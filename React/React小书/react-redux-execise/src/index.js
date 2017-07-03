@@ -13,14 +13,14 @@ import './index.css';
 function createStore(reducer){
 	let state = null;
 	const listeners = [];
-	const subscriber = (listener) => listeners.push(listener);
+	const subscribe = (listener) => listeners.push(listener);
 	const getState = () => state;
 	const dispatch = (action) => {
 		state = reducer(state, action);
 		listeners.forEach(listener => listener());
 	}
 	dispatch({});
-	return{getState, dispatch, subscriber};
+	return{getState, dispatch, subscribe};
 }
 
 const themeReducer = (state, action) => {
@@ -33,16 +33,16 @@ const themeReducer = (state, action) => {
 		default: 
 			return state;
 	}
-}
+};
 
 const store = createStore(themeReducer);
 
-Class Index extends Component {
+class Index extends Component {
 	static childContextTypes = {
 		store: PropTypes.object
 	};
 
-	getChildContex(){
+	getChildContext(){
 		return {store};
 	}
 

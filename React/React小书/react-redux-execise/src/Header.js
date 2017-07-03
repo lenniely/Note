@@ -1,8 +1,8 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 
-Class Header extends Component {
-	Static contextTypes = {
+class Header extends Component {
+	static contextTypes = {
 		store: PropTypes.object
 	};
 
@@ -12,11 +12,14 @@ Class Header extends Component {
 	}
 
 	componentWillMount(){
+		const { store } = this.context;
 		this._updateThemeColor();
+		store.subscribe(() => this._updateThemeColor());
+
 	}
 
 	_updateThemeColor(){
-		const {store} = this.context;
+		const { store } = this.context;
 		const state = store.getState();
 		this.setState({ themeColor: state.themeColor});
 	}
