@@ -9,3 +9,5 @@ When should I use `return` in es6 Arrow Functions? https://stackoverflow.com/que
 http://cn.redux.js.org/
 https://www.smashingmagazine.com/2016/06/an-introduction-to-redux/
 
+https://stackoverflow.com/questions/33611812/javascript-es6-export-const-vs-export-default
+
