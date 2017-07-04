@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 
 export const connect = (mapStateToProps, mapDispatchToProps) => (WrappedComponent) => {
 	class Connect extends Component {
+
 		static contextTypes = {
 			store: PropTypes.object
 		};
@@ -16,7 +17,7 @@ export const connect = (mapStateToProps, mapDispatchToProps) => (WrappedComponen
 		componentWillMount(){
 			const {store} = this.context;
 			this._updateState();
-			this.subscribe = (() => this._updateState());
+			store.subscribe(() => this._updateState());
 		}
 
 		_updateState(){
