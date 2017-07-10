@@ -8,7 +8,7 @@ export default class Header extends Component {
 
 	render() {
 		return (
-			<h1 style={{this.props.themeColor}}></h1>
+			<h1 style={{color:this.props.themeColor}}></h1>
 		);
 	}
 }

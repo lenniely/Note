@@ -3,8 +3,8 @@ import ReactDOM from 'react-dom';
 import App from './App';
 import PropTypes from 'prop-types'
 import registerServiceWorker from './registerServiceWorker';
-import Header from './Header'
-import Content from './Content'
+import Header from './containers/Header'
+import Content from './containers/Content'
 import './index.css';
 import {Provider} from 'react-redux'
 import {createStore} from 'redux'

@@ -1,6 +1,6 @@
 import React from 'react'
-import { connect } from 'redux-react'
-import ThemeSwitch from '../containers/ThemeSwitch'
+import { connect } from 'react-redux'
+import ThemeSwitch from '../components/ThemeSwitch'
 
 
 const mapStateToProps = (state) => {
@@ -11,7 +11,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
 	return {
-		onSwitchTheme : (color) => {
+		onSwitchColor : (color) => {
 			dispatch({type: 'CHANGE_COLOR', themeColor:color});
 		}
 	};
