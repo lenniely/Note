@@ -3,3 +3,15 @@ npm i --save-dev webpack
 npm i --save express
 npm i --save babel-core bable-loader babel-preset-es2015 babel-preset-stage-1 babel-preset-react 
 npm i --save redux react-redux
+
+
+Three Principles of Redux:
+1. The state of your whole application is stored in an object tree within a single store.
+2. The only way to change the state is to emit an Action
+3. Reducers have to be pure-functions.
+
+Immutability of the state:
+1. When making operations with ARRAYS, DO NOT USE mutable methods: push() or splice(), USE concat(), slice() or ...spread operator.
+2. When making operations with OBJECTS, USE Object.Assign() or ...spread operator.
+	https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Object/assign
+
