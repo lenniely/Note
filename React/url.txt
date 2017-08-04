@@ -11,3 +11,12 @@ https://www.smashingmagazine.com/2016/06/an-introduction-to-redux/
 
 https://stackoverflow.com/questions/33611812/javascript-es6-export-const-vs-export-default
 
+https://github.com/wxyyxc1992/Coder-Knowledge-Management/blob/master/Awesome-Reference/Web/Framework/React-Reference.md
+
+https://github.com/wxyyxc1992/Coder-Knowledge-Management/blob/master/Awesome-Reference/Web/EPractices/WebTest-Reference.md
+
+https://github.com/wxyyxc1992/Coder-Knowledge-Management/blob/master/Awesome-Reference/Web/Framework/Redux-Reference.md
+
+https://github.com/wxyyxc1992/Coder-Knowledge-Management/blob/master/Awesome-Reference/Web/Syntax/JavaScript/JavaScript-Reference.md
+
+http://www.oschina.net/news/75530/9-things-every-reactjs-beginner-should-know

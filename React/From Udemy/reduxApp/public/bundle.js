@@ -60,88 +60,45 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 0);
+/******/ 	return __webpack_require__(__webpack_require__.s = 8);
 /******/ })
 /************************************************************************/
 /******/ ([
 /* 0 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* WEBPACK VAR INJECTION */(function(process) {/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__createStore__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__combineReducers__ = __webpack_require__(21);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__bindActionCreators__ = __webpack_require__(22);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__applyMiddleware__ = __webpack_require__(23);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__compose__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__utils_warning__ = __webpack_require__(6);
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "createStore", function() { return __WEBPACK_IMPORTED_MODULE_0__createStore__["b"]; });
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "combineReducers", function() { return __WEBPACK_IMPORTED_MODULE_1__combineReducers__["a"]; });
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "bindActionCreators", function() { return __WEBPACK_IMPORTED_MODULE_2__bindActionCreators__["a"]; });
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "applyMiddleware", function() { return __WEBPACK_IMPORTED_MODULE_3__applyMiddleware__["a"]; });
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "compose", function() { return __WEBPACK_IMPORTED_MODULE_4__compose__["a"]; });
 
 
-var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
-var _redux = __webpack_require__(8);
 
-function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
 
-//STEP 3 define reducers
-var reducer = function reducer() {
-	var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : { "books": [] };
-	var action = arguments[1];
 
-	switch (action.type) {
-		case "POST_BOOK":
-			// let books = state.books.concat(action.payload);
-			// return {"books": books};
-			return { "books": [].concat(_toConsumableArray(state.books), _toConsumableArray(action.payload)) };
-			break;
-		case "DELETE_BOOK":
-			var booksObjs = [].concat(_toConsumableArray(state.books));
-			var itemIndex = booksObjs.findIndex(function (book) {
-				return book.id == action.payload.id;
-			});
-			//console.log(itemIndex);
-			return { "books": [].concat(_toConsumableArray(state.books.slice(0, itemIndex)), _toConsumableArray(state.books.slice(itemIndex + 1))) };
-			break;
-		case "UPDATE_BOOK":
-			var booksObjsUpd = [].concat(_toConsumableArray(state.books));
-			var itemIndexUpd = booksObjsUpd.findIndex(function (book) {
-				return book.id == action.payload.id;
-			});
-			var updatedBook = _extends({}, booksObjsUpd.itemIndexUpd, { "description": action.payload.description, "title": action.payload.title });
-			return { "books": [booksObjsUpd.slice(0, itemIndexUpd), updatedBook, booksObjsUpd.slice(itemIndexUpd + 1)] };
-			break;
-	}
-	return state;
-};
 
-//STEP 1 create the store
-var store = (0, _redux.createStore)(reducer);
+/*
+* This is a dummy function to check if the function name has been altered by minification.
+* If the function has been minified and NODE_ENV !== 'production', warn the user.
+*/
+function isCrushed() {}
 
-store.subscribe(function () {
-	console.log("current state is: ", store.getState());
-	//console.log("current state is: ", store.getState()[1].id);
-});
-//STEP 2 create and dispatch actions
+if (process.env.NODE_ENV !== 'production' && typeof isCrushed.name === 'string' && isCrushed.name !== 'isCrushed') {
+  Object(__WEBPACK_IMPORTED_MODULE_5__utils_warning__["a" /* default */])('You are currently using minified code outside of NODE_ENV === \'production\'. ' + 'This means that you are running a slower development build of Redux. ' + 'You can use loose-envify (https://github.com/zertosh/loose-envify) for browserify ' + 'or DefinePlugin for webpack (http://stackoverflow.com/questions/30030031) ' + 'to ensure you have the correct code for your production build.');
+}
 
-store.dispatch({
-	type: "POST_BOOK",
-	payload: [{
-		id: 1,
-		title: "Book Title",
-		description: "This is a book description"
-	}, {
-		id: 2,
-		title: "Book Title - 2",
-		description: "This is the second book description"
-	}, {
-		id: 3,
-		title: "Book Title - 3",
-		description: "This is the third book description"
-	}]
-});
 
-store.dispatch({
-	type: "UPDATE_BOOK",
-	payload: {
-		id: 2,
-		title: "Book Title - 2",
-		description: "This is the second book description. updated description."
-	}
-
-});
+/* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(1)))
 
 /***/ }),
 /* 1 */
@@ -774,40 +731,95 @@ function compose() {
 
 /***/ }),
 /* 8 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* WEBPACK VAR INJECTION */(function(process) {/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__createStore__ = __webpack_require__(2);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__combineReducers__ = __webpack_require__(21);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__bindActionCreators__ = __webpack_require__(22);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__applyMiddleware__ = __webpack_require__(23);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__compose__ = __webpack_require__(7);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__utils_warning__ = __webpack_require__(6);
-/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "createStore", function() { return __WEBPACK_IMPORTED_MODULE_0__createStore__["b"]; });
-/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "combineReducers", function() { return __WEBPACK_IMPORTED_MODULE_1__combineReducers__["a"]; });
-/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "bindActionCreators", function() { return __WEBPACK_IMPORTED_MODULE_2__bindActionCreators__["a"]; });
-/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "applyMiddleware", function() { return __WEBPACK_IMPORTED_MODULE_3__applyMiddleware__["a"]; });
-/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "compose", function() { return __WEBPACK_IMPORTED_MODULE_4__compose__["a"]; });
 
 
+var _redux = __webpack_require__(0);
 
+var _index = __webpack_require__(24);
 
+var _index2 = _interopRequireDefault(_index);
 
+var _cartActions = __webpack_require__(27);
 
+var _booksActions = __webpack_require__(28);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 /*
-* This is a dummy function to check if the function name has been altered by minification.
-* If the function has been minified and NODE_ENV !== 'production', warn the user.
+// //STEP 3 define reducers
+// const reducer = function(state = {"books": []}, action){
+// 	switch(action.type){
+// 		case "POST_BOOK":
+// 			// let books = state.books.concat(action.payload);
+// 			// return {"books": books};
+// 			return {"books":[...state.books, ...action.payload]};
+// 			break;
+// 		case "DELETE_BOOK":
+// 			const booksObjs = [...state.books];
+// 			const itemIndex = booksObjs.findIndex(function(book){
+// 				return book.id == action.payload.id;
+// 			});
+// 			//console.log(itemIndex);
+// 			return {"books": [...state.books.slice(0, itemIndex), ...state.books.slice(itemIndex+1)]};
+// 			break;
+// 		case "UPDATE_BOOK":
+// 			const booksObjsUpd = [...state.books];
+// 			const itemIndexUpd = booksObjsUpd.findIndex(function(book){
+// 				return book.id == action.payload.id;
+// 			});
+// 			const updatedBook = {...booksObjsUpd.itemIndexUpd, "description":action.payload.description, "title": action.payload.title}
+// 			return {"books": [booksObjsUpd.slice(0, itemIndexUpd), updatedBook, booksObjsUpd.slice(itemIndexUpd+1)]};
+// 			break;
+// 	}
+// 	return state;
+// };
+
 */
-function isCrushed() {}
 
-if (process.env.NODE_ENV !== 'production' && typeof isCrushed.name === 'string' && isCrushed.name !== 'isCrushed') {
-  Object(__WEBPACK_IMPORTED_MODULE_5__utils_warning__["a" /* default */])('You are currently using minified code outside of NODE_ENV === \'production\'. ' + 'This means that you are running a slower development build of Redux. ' + 'You can use loose-envify (https://github.com/zertosh/loose-envify) for browserify ' + 'or DefinePlugin for webpack (http://stackoverflow.com/questions/30030031) ' + 'to ensure you have the correct code for your production build.');
-}
+// //STEP 1 create the store
+// const store = createStore(reducer);
+var store = (0, _redux.createStore)(_index2.default);
 
+store.subscribe(function () {
+	console.log("current state is: ", store.getState());
+	//console.log("current state is: ", store.getState()[1].id);
+});
+//STEP 2 create and dispatch actions
 
-/* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(1)))
+store.dispatch({
+	type: "POST_BOOK",
+	payload: [{
+		id: 1,
+		title: "Book Title",
+		description: "This is a book description"
+	}, {
+		id: 2,
+		title: "Book Title - 2",
+		description: "This is the second book description"
+	}, {
+		id: 3,
+		title: "Book Title - 3",
+		description: "This is the third book description"
+	}]
+});
+
+store.dispatch({
+	type: "UPDATE_BOOK",
+	payload: {
+		id: 2,
+		title: "Book Title - 2",
+		description: "This is the second book description. updated description."
+	}
+
+});
+
+// --> CART ACTIONS <<--
+//ADD to cart
+
+store.dispatch((0, _cartActions.addToCart)([{ id: 2 }]));
 
 /***/ }),
 /* 9 */
@@ -1380,6 +1392,168 @@ function applyMiddleware() {
       });
     };
   };
+}
+
+/***/ }),
+/* 24 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+	value: true
+});
+
+var _redux = __webpack_require__(0);
+
+var _booksReducers = __webpack_require__(25);
+
+var _cartReducers = __webpack_require__(26);
+
+exports.default = (0, _redux.combineReducers)({
+	books: _booksReducers.booksReducers,
+	cart: _cartReducers.cartReducers
+});
+
+/***/ }),
+/* 25 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+//Book Reducers.
+
+Object.defineProperty(exports, "__esModule", {
+	value: true
+});
+
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+exports.booksReducers = booksReducers;
+
+function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
+
+function booksReducers() {
+	var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : { "books": [] };
+	var action = arguments[1];
+
+	switch (action.type) {
+		case "POST_BOOK":
+			// let books = state.books.concat(action.payload);
+			// return {"books": books};
+			return { "books": [].concat(_toConsumableArray(state.books), _toConsumableArray(action.payload)) };
+			break;
+		case "DELETE_BOOK":
+			var booksObjs = [].concat(_toConsumableArray(state.books));
+			var itemIndex = booksObjs.findIndex(function (book) {
+				return book.id == action.payload.id;
+			});
+			//console.log(itemIndex);
+			return { "books": [].concat(_toConsumableArray(state.books.slice(0, itemIndex)), _toConsumableArray(state.books.slice(itemIndex + 1))) };
+			break;
+		case "UPDATE_BOOK":
+			var booksObjsUpd = [].concat(_toConsumableArray(state.books));
+			var itemIndexUpd = booksObjsUpd.findIndex(function (book) {
+				return book.id == action.payload.id;
+			});
+			var updatedBook = _extends({}, booksObjsUpd.itemIndexUpd, { "description": action.payload.description, "title": action.payload.title });
+			return { "books": [booksObjsUpd.slice(0, itemIndexUpd), updatedBook, booksObjsUpd.slice(itemIndexUpd + 1)] };
+			break;
+	}
+	return state;
+};
+
+/***/ }),
+/* 26 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+//CART REDUCERS
+
+Object.defineProperty(exports, "__esModule", {
+	value: true
+});
+exports.cartReducers = cartReducers;
+
+function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
+
+function cartReducers() {
+	var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : { cart: [] };
+	var action = arguments[1];
+
+	switch (action.type) {
+		case "ADD_TO_CART":
+			return { cart: [].concat(_toConsumableArray(state.cart), _toConsumableArray(action.payload)) };
+			break;
+		case "DEL_CART":
+			break;
+		case "UPDATE_CART":
+			break;
+		default:
+			return state;
+	}
+	return state;
+}
+
+/***/ }),
+/* 27 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+//Add To Cart
+
+Object.defineProperty(exports, "__esModule", {
+	value: true
+});
+exports.addToCart = addToCart;
+function addToCart(book) {
+	return {
+		type: "ADD_TO_CART",
+		payload: book
+	};
+}
+
+/***/ }),
+/* 28 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+//Post Book
+
+Object.defineProperty(exports, "__esModule", {
+	value: true
+});
+exports.postBooks = postBooks;
+exports.DelBook = DelBook;
+exports.updateBook = updateBook;
+function postBooks(books) {
+	return {
+		type: "POST_BOOK",
+		payload: books
+	};
+}
+
+//Delete Book
+function DelBook(book) {
+	return {
+		type: "DELETE_BOOK",
+		payload: book
+	};
+}
+//Update Book
+function updateBook(book) {
+	return {
+		type: "UPDATE_BOOK",
+		payload: book
+	};
 }
 
 /***/ })
