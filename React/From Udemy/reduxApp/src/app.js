@@ -1,8 +1,9 @@
 "use strict"
-import { createStore} from 'redux';
+import { createStore, applyMiddleware} from 'redux';
 import reducers from './reducers/index';
-import {addToCart} from './actions/cartActions'
-import {postBooks, DelBook, updateBook} from './actions/booksActions'
+import {addToCart} from './actions/cartActions';
+import {postBooks, DelBook, updateBook} from './actions/booksActions';
+import logger from 'redux-logger';
 /*
 // //STEP 3 define reducers
 // const reducer = function(state = {"books": []}, action){
@@ -36,17 +37,17 @@ import {postBooks, DelBook, updateBook} from './actions/booksActions'
 
 // //STEP 1 create the store
 // const store = createStore(reducer);
-const store = createStore(reducers);
 
-store.subscribe(() => {
-	console.log("current state is: ", store.getState());
-	//console.log("current state is: ", store.getState()[1].id);
-});
-//STEP 2 create and dispatch actions
+const minddleware = applyMiddleware(logger);
+const store = createStore(reducers, minddleware);
 
-store.dispatch({
-	type: "POST_BOOK", 
-	payload: [
+// store.subscribe(() => {
+// 	console.log("current state is: ", store.getState());
+// 	//console.log("current state is: ", store.getState()[1].id);
+// });
+// //STEP 2 create and dispatch actions
+
+store.dispatch( postBooks([
 		{
 			id: 1,
 			title: "Book Title",
@@ -62,18 +63,13 @@ store.dispatch({
 			title: "Book Title - 3",
 			description: "This is the third book description"
 		}
-	]
-});
+	]));
 
-store.dispatch({
-	type: "UPDATE_BOOK", 
-	payload: {
+store.dispatch(updateBook({
 			id: 2,
 			title: "Book Title - 2",
 			description: "This is the second book description. updated description."
-		}
-	
-});
+		}));
 
 // --> CART ACTIONS <<--
 //ADD to cart
