@@ -1,39 +1,13 @@
 "use strict"
 import { createStore, applyMiddleware} from 'redux';
 import reducers from './reducers/index';
+import logger from 'redux-logger';
+import React from 'React'
+import ReactDOM from 'react-dom'
 import {addToCart} from './actions/cartActions';
 import {postBooks, DelBook, updateBook} from './actions/booksActions';
-import logger from 'redux-logger';
-/*
-// //STEP 3 define reducers
-// const reducer = function(state = {"books": []}, action){
-// 	switch(action.type){
-// 		case "POST_BOOK":
-// 			// let books = state.books.concat(action.payload);
-// 			// return {"books": books};
-// 			return {"books":[...state.books, ...action.payload]};
-// 			break;
-// 		case "DELETE_BOOK":
-// 			const booksObjs = [...state.books];
-// 			const itemIndex = booksObjs.findIndex(function(book){
-// 				return book.id == action.payload.id;
-// 			});
-// 			//console.log(itemIndex);
-// 			return {"books": [...state.books.slice(0, itemIndex), ...state.books.slice(itemIndex+1)]};
-// 			break;
-// 		case "UPDATE_BOOK":
-// 			const booksObjsUpd = [...state.books];
-// 			const itemIndexUpd = booksObjsUpd.findIndex(function(book){
-// 				return book.id == action.payload.id;
-// 			});
-// 			const updatedBook = {...booksObjsUpd.itemIndexUpd, "description":action.payload.description, "title": action.payload.title}
-// 			return {"books": [booksObjsUpd.slice(0, itemIndexUpd), updatedBook, booksObjsUpd.slice(itemIndexUpd+1)]};
-// 			break;
-// 	}
-// 	return state;
-// };
-
-*/
+import BooksList from './components/pages/BooksList'
+import {Provider} from 'react-redux'
 
 // //STEP 1 create the store
 // const store = createStore(reducer);
@@ -65,15 +39,21 @@ store.dispatch( postBooks([
 		}
 	]));
 
-store.dispatch(updateBook({
-			id: 2,
-			title: "Book Title - 2",
-			description: "This is the second book description. updated description."
-		}));
+// store.dispatch(updateBook({
+// 			id: 2,
+// 			title: "Book Title - 2",
+// 			description: "This is the second book description. updated description."
+// 		}));
 
 // --> CART ACTIONS <<--
 //ADD to cart
 
 store.dispatch(addToCart([{id: 2}]));
+
+ReactDOM.render(
+	<Provider store={store}>
+		<BooksList />
+	</Provider> , 
+	document.getElementById('app'));
 
 
