@@ -1,3 +1,4 @@
 https://segmentfault.com/a/1190000005174755
 https://segmentfault.com/a/1190000007362890
 https://fakefish.github.io/react-webpack-cookbook/Introduction-to-Webpack.html
+You do not know JS https://github.com/getify/You-Dont-Know-JS/tree/master/this%20%26%20object%20prototypes
