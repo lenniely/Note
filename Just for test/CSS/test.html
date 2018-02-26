@@ -1,0 +1,40 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<style type="text/css">
+		html, body, div{
+			margin:0;
+			padding:0;
+			border:0;
+		}
+		div.container{
+			background: #eee;
+			width:600px;
+			border: 1px solid #000;
+			float:left;
+		}
+		div.firstdiv{
+			width: 100%;
+			background: blue;
+			float: left;
+		}
+		div.test_margin-right_nav{
+			width:150px;
+			background: #aee;
+			margin-right:-150px; /*此div从第二行跑到第一行末尾,追加而不是覆盖*/
+			/*margin-left:-150px;*/ /*此div从第二行跑到第一行末尾,覆盖*/
+			float:left;
+		}
+	</style>
+</head>
+<body>
+	<div class="container">
+		<div class="firstdiv">This is the first div. It is there because we want to test what next div will do.</div>
+		<div class="test_margin-right_nav">
+			This div is a test div for margin right, to test the navagate value of margin-right, what kind of action this div will take.
+		</div>
+
+		
+	</div>
+</body>
+</html>

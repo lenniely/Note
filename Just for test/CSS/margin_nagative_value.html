@@ -1,0 +1,145 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<style type="text/css">
+		html, body, div, p, ul, li {
+			margin: 0;
+			padding: 0;
+			border: 0;
+			outline: 0;
+			font-weight: inherit;
+			font-style: inherit;
+			font-size: 100%;
+			font-family: inherit;
+			vertical-align: baseline;
+		}
+		html, body{
+			width: 600px;
+			background:#dff;
+			margin:0 auto;
+			border: 1px solid #ccc;
+		}
+		div{
+			background:#edd;
+		}
+		p:nth-child(odd){
+			background:#afc;
+		}
+		p:nth-child(even){
+			background:#faa;
+		}
+		.none-declare-width{
+			background:#aff;
+		}
+		.declare-width{
+			
+		}
+		.margin-lr-test{
+			margin-left:-50px;
+			/*margin-right: -50px;*/ /*本元素未生命width值时，margin-left, margin-right为负值增大了元素块的宽度，以至于宽度大于父元素。*/
+		}
+
+		.margin-tb-test{
+			/*margin-top:-50px;*/
+			margin-bottom:-50px;
+
+		}
+
+
+
+		ul li{
+			list-style:none;
+			float: left;
+			width:150px;  /*body宽度600px，要每行放下四个li元素，显然不够，怎么解决？ 父元素ul margin-right 为负值增加宽度，再用overflow：hidden隐藏超出边界的部分。*/
+			margin-right:20px;
+			margin-bottom:20px;
+			height:100px;
+			background: blue;
+		}
+
+		ul{
+			margin-right:-150px;
+			overflow:hidden;
+			background: #ccc;
+		}
+
+		
+		div.height-equal-items{
+			overflow:hidden;
+		}
+		div.left{
+			background: blue;
+			width:150px;
+			float:left;
+			/*height:80px;*/
+			margin-right:20px;
+			margin-bottom:-500px;
+			padding-bottom:500px;
+		}
+		div.middle{
+			background: yellow;
+			width:150px;
+			float:left;
+			/*height:200px;*/
+			margin-right:20px;
+			margin-bottom:-500px;
+			padding-bottom:500px;
+		}
+		div.right{
+			background: red;
+			width:150px;
+			float:left;
+			/*height:150px;*/
+			margin-right:20px;
+			margin-bottom:-500px;
+			padding-bottom:500px;
+		}
+
+
+	</style>
+</head>
+<body>
+	<div class="declare-width">This is the first div. 
+		<span>It contains this span.</span> Let's see the position of this div loacted on this page. Let's see the position of this div loacted on this page. Let's see the position of this div loacted on this page. Let's see the position of this div loacted on this page.
+		<p > This is a paragraph inside first div. This is a paragraph inside first div. This is a paragraph inside first div. This is a paragraph inside first div. This is a paragraph inside first div.</p>
+		<p class="margin-lr-test"> This is another paragraph inside first div. This is another paragraph inside first div. This is another paragraph inside first div. This is another paragraph inside first div. This is another paragraph inside first div.</p>
+		<p class="margin-tb-test"> This is another paragraph inside first div. This is another paragraph inside first div. This is another paragraph inside first div. This is another paragraph inside first div. This is another paragraph inside first div.</p>
+		<p> This is another paragraph inside first div. This is another paragraph inside first div. This is another paragraph inside first div. This is another paragraph inside first div. This is another paragraph inside first div.</p>
+	</div>
+
+	<div>This is the second div. Let's see the position of this div loacted on this page. Let's see the position of this div loacted on this page. Let's see the position of this div loacted on this page. Let's see the position of this div loacted on this page.</div>
+
+	<div class="none-declare-width">This is the third div. 
+		<span>It contains this span.</span> Let's see the position of this div loacted on this page. Let's see the position of this div loacted on this page. Let's see the position of this div loacted on this page. Let's see the position of this div loacted on this page.
+		<p> This is a paragraph inside first div. This is a paragraph inside first div. This is a paragraph inside first div. This is a paragraph inside first div. This is a paragraph inside first div.</p>
+		<p> This is another paragraph inside first div. This is another paragraph inside first div. This is another paragraph inside first div. This is another paragraph inside first div. This is another paragraph inside first div.</p>
+		<p> This is another paragraph inside first div. This is another paragraph inside first div. This is another paragraph inside first div. This is another paragraph inside first div. This is another paragraph inside first div.</p>
+		<p> This is another paragraph inside first div. This is another paragraph inside first div. This is another paragraph inside first div. This is another paragraph inside first div. This is another paragraph inside first div.</p>
+	</div>
+
+	<div>This is the fourth div. Let's see the position of this div loacted on this page. Let's see the position of this div loacted on this page. Let's see the position of this div loacted on this page. Let's see the position of this div loacted on this page.</div>
+
+	<div class="margin-nag-test">
+	    <ul>
+	        <li>子元素1</li>
+	        <li>子元素2</li>
+	        <li>子元素3</li>
+	        <li>子元素4</li>
+	        <li>子元素5</li>
+	        <li>子元素6</li>
+	        <li>子元素7</li>
+	        <li>子元素8</li>
+	    </ul>
+	</div>
+
+	<div class="height-equal-items">
+		<div class="left">This is a test div element.</div>	
+		<div class="middle">This is a test div element. This is a test div element. This is a test div element. This is a test div element. This is a test div element. This is a test div element. This is a test div element. This is a test div element. This is a test div element. This is a test div element.</div>	
+		<div class="right">This is a test div element. This is a test div element. This is a test div element.</div>		
+	</div>
+</body>
+</html>
+
+
+
+

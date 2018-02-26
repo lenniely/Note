@@ -1,0 +1,241 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<style type="text/css" media="all">
+
+			html, body, div, span, applet, object, iframe,
+			h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+			a, abbr, acronym, address, big, cite, code,
+			del, dfn, em, font, img, ins, kbd, q, s, samp,
+			small, strike, strong, sub, sup, tt, var,
+			dl, dt, dd, ol, ul, li,
+			fieldset, form, label, legend,
+			table, caption, tbody, tfoot, thead, tr, th, td {
+				margin: 0;
+				padding: 0;
+				border: 0;
+				outline: 0;
+				font-weight: inherit;
+				font-style: inherit;
+				font-size: 100%;
+				font-family: inherit;
+				vertical-align: baseline;
+			}
+			body{
+				background: #eee;
+			}
+			div.case1-1{
+				width: 40%;
+				margin: 0 auto; /*应用此方法水平居中的元素必须设置宽度值*/
+				background: #aeaeae;
+			}
+
+			div.case1-2 {
+			  height: 400px;
+			  width: 40%;
+			  background: #aeaeae;
+			  margin: 0 auto;
+			}
+
+			p.case1-2 {
+			  width: 60%;
+			  margin: 0 auto; /*margin: auto；也同样工作*/
+			  font: 14px/1.5 Helvetica, sans-serif;
+			}
+
+			.case2-1 .container {
+			  width: 400px;
+			  height:200px; /*唯一的子元素为absolute元素， 父元素不设置高度的话height值为0*/
+			  background: #dedede;
+			  margin: 10px auto;
+			  position: relative;
+			}
+
+			.case2-1 .box {
+			  width: 200px;
+			  background: #aeaeae;
+			  position: absolute;
+			  left: 100px; /* left值为： (400px - 200px)/2 = 100px. 适用于父元素和子元素宽度都固定的情景*/
+			}
+
+			.case2-2 .container {
+			  width: 400px;
+			  height:300px; 
+			  background: #dedede;
+			  margin: 10px auto;
+			  position: relative;
+			}
+
+			.case2-2 .box {
+			  /*width: 200px;*/
+			  width: 50%;
+			  background: #aeaeae;
+			  position: absolute;
+			  left: 50%;
+			  /*margin-left: -100px; 也可用margin：0 0 0 -100px 代替。 -100px为该元素的宽度/2*/
+			  margin-left: -25%; /*该元素宽度50%， margin-left值25%*/
+			}
+
+			.case3-1{
+				width: 500px;
+				height: 500px;
+				background: #aeaeae;
+				margin:0 auto;
+				position: relative;
+			}
+
+			.case3-1 .container{
+				  height: 300px;
+				  width: 200px;
+				  background: #eee;
+				  position: absolute;
+				  left: 50%;
+				  top: 50%;
+				  margin:-150px 0 0 -100px;
+			}
+			.case3-1 .box{
+				  height: 150px;
+				  width: 100px;
+				  background: #aeaeae;
+				  position: absolute;
+				  left: 50%;
+				  top: 50%;
+				  margin: -75px 0 0 -50px;
+			}
+			
+			.case4-1 h1{
+				color: #aeaeae;
+				background: #dedede;
+				width: 500px;
+				height: 200px;
+				margin: 0 auto;
+				font: 30px/1 Helvetica, sans-serif;
+				text-align: center; /*水平居中对齐*/
+				line-height: 200px; /*设置单行文本垂直居中, line-height的值设置为文本元素的父元素高度值*/
+			}
+			
+			.case4-2 .container{
+				width: 500px;
+				height: 200px;
+				margin: 0 auto;
+				background: #dedede;
+				display: table;
+			}
+			.case4-2 h1{
+				text-align: center;
+				font: 30px/1 Helvetica, sans-serif;
+				display: table-cell;
+				vertical-align: middle; /*vertical-align只只对拥有valign特性的元素才生效，所以我们设置container的display属性为table，设置h1的display值为table-cell. 此方法只对IE7以上的浏览器有效。*/
+
+			}
+
+			.case4-2-1 .container{
+				width: 500px;
+				height: 200px;
+				margin: 0 auto;
+				background: #dedede;
+				display: table;
+				*position:relative; /*兼容IE7及以下版本*/
+			}
+			.case4-2-1 .container-2{
+				text-align: center;
+				display: table-cell;
+				vertical-align: middle;
+				*position:absolute;/*兼容IE7及以下版本*/
+				*top:50%; /*相对于包含块的高度，也就是.container的高度*/
+			}
+			.case4-2-1 h1{
+				font: 30px/1 Helvetica, sans-serif;
+				*position:relative;/*兼容IE7及以下版本*/
+				*top:-50%; /*相对于包含块的高度，也就是.case4-2-1下的.container-2的高度*/
+				background: #aeaeae;
+			}
+
+			.case4-3 h1{
+				width: 500px;
+				margin: 0 auto;
+				background: #dedede;
+				text-align: center;
+				padding: 50px 5px; /*文本父元素高度不固定时，只需要设置父元素的padding-top = padding-bottom值。*/
+				font: 30px/1 Helvetica, sans-serif;
+			}
+
+			.case4-4 .container{
+				width: 400px;
+				height: 200px;
+				background: url('./background/test.png') no-repeat #dedede center;
+				margin:0 auto;
+
+			}
+
+		</style>
+	</head>
+	<body>
+		<a herf="https://mayvendev.com/blog/how-to-center-anything-with-css"> How To Center Anything With CSS</a>
+		<div class="case1-1" class="main"> This is the first case of this page. It is a horizental alignment case. This is a horizentally center an element show.</div>
+		<br />
+		<br />
+		<div class="case1-2">
+			<p class="case1-2"> For "margin: 0 auto", it’s important to note that while this trick will work on most block level elements, not just divs, it won’t help you out with vertical centering.</p>
+		</div>
+		<br />
+		<br />
+		<div class="case2-1">
+			<div class="container">
+				<div class="box"> Center An Absolutely Positioned Element Horizentally. absolute element's left value = (parent width - element width)/2. </div>
+			</div>
+		</div>
+		<br />
+		<br />
+		<div class="case2-2">
+			<div class="container">
+				<div class="box"> Center An Absolutely Positioned Element Horizentally. Given the popularity of responsive design though, more and more containers are going the fluid route lately. To accomplish this, we need to use a percentage for the left value. The obvious answer is to use 50%, we need to add in a negative left margin of half the width of the child element. It’s important to note that this would also work if our child element had a fluid width. </div>
+			</div>
+		</div>
+		<br />
+		<br />
+		<div class="case3-1">
+			<div class="container">
+				<div class="box"> Centering both the parent and child block elements horizontally and vertically. </div>
+			</div>
+		</div>
+		<br />
+		<br />
+		<div class="case4-1">
+			<div class="container">
+				<h1> Centering Text - single line only.</h1>
+			</div>			
+		</div>
+		<br />
+		<br />
+		<div class="case4-2">
+			<!-- <div class="container"> -->
+				<div class="container">
+					<h1> Centering Text - multiple lines. parent element's height is static.</h1>
+				</div>	
+			<!-- </div>		 -->
+		</div>
+		<br />
+		<br />
+		<div class="case4-2-1">
+			<div class="container">
+				<div class="container-2">
+					<h1> Centering Text - multiple lines. parent element's height is static. This is a version works for browsers under or equal IE7.</h1>
+				</div>	
+			</div>		
+		</div>
+		<br />
+		<br />
+		<div class="case4-3">
+			<div class="container">
+				<h1> Centering Text - multiple lines. parent element's height is NOT static.</h1>
+			</div>			
+		</div>
+		<br />
+		<br />
+		<div class="case4-4">
+			<div class="container"> Centering a Background Image </div>			
+		</div>
+
+	</body>
+</html>

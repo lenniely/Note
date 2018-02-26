@@ -1,0 +1,52 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<script type="text/javascript">
+			/*RegExp 对象的 exec方法*/
+			var myRegExp = /\sthe/g;
+			var str = "Hello there, the theatre is nice.";
+			var displayStr = "";
+			while((result = myRegExp.exec(str)) != null){
+				displayStr += "Matched '" + result
+				+ "' at position "+ result.index 
+				+ ". The next match attempt begins at position " + myRegExp.lastIndex;
+				console.log(displayStr);
+				displayStr = "";
+			}
+
+
+			/*RegExp 对象的 exec方法 和 string 的match方法对比*/
+			var someText = "web2.0 .net2.0";
+			var pattern_g_g = /(\w+)(\d)\.(\d)/g; //全局且分组了； 
+			var pattern_n_g = /(\w+)(\d)\.(\d)/; //不指定全局，分组；
+			var pattern_g = /\w+\d.\d/g; //全局不分组；
+			var pattern = /\w+\d.\d/; //不全局不分组；
+
+			var outCome_exec_g_g=pattern_g_g.exec(someText);
+			var outCome_matc_g_g=someText.match(pattern_g_g);
+			console.log(outCome_exec_g_g); //Array [ "web2.0", "web", "2", "0" ] 分组的原因
+			console.log(outCome_matc_g_g); //Array [ "web2.0", "net2.0" ]
+
+			var outCome_exec_n_g=pattern_n_g.exec(someText);
+			var outCome_matc_n_g=someText.match(pattern_n_g);
+			console.log(outCome_exec_n_g); //Array [ "web2.0", "web", "2", "0" ] 
+			console.log(outCome_matc_n_g); //Array [ "web2.0", "web", "2", "0"  ]
+
+			var outCome_exec_g=pattern_g.exec(someText);
+			var outCome_matc_g=someText.match(pattern_g);
+			console.log(outCome_exec_g); //Array [ "web2.0"] 
+			console.log(outCome_matc_g); //Array [ "web2.0", "net2.0" ]
+
+			var outCome_exec=pattern.exec(someText);
+			var outCome_matc=someText.match(pattern);
+			console.log(outCome_exec); //Array [ "web2.0"] 
+			console.log(outCome_matc); //Array [ "web2.0"]
+
+
+
+		</script>
+	</head>
+	<body>
+		aaa
+	</body>
+</html>

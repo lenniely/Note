@@ -1,0 +1,174 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<style type="text/css">
+		html, body, div{
+			margin:0;
+			padding:0;
+			outline: 0;
+			border:0;
+		}
+
+		html, body {
+			background: #ffa;
+			margin:0 auto;
+			width: 960px;
+			
+		}
+
+		body{
+			border: 2px solid #000;
+		}
+		div {
+			background: #eee;
+			border: 1px solid #aaa;
+		}
+		div.first_div{
+			float:left;
+		}
+		div.position_test{
+			background: #aff;
+			float:left;
+			position:relative;
+			left: 250px; /*此div会相对于上一个float元素左偏移250px。*/
+			top: 20px;
+		}
+		div.first_div, div.position_test, div.test_foot{
+			width: 30%;
+		}
+
+
+
+
+		div#inner{
+			position:relative;
+			right:75%;
+			border: 1px solid #a00;
+			float:left;
+		}
+		div#inner #left{
+			float:left;
+			width:25%;
+			position: relative;
+			left:75%;
+
+		}
+
+		div#inner #right{
+			width: 74%;
+			float: left;
+			position: relative;
+			left:75%;
+
+		}
+		div#outer{
+			float:left;
+			overflow: hidden;
+			/*background: #333;*/
+		}
+		div.clear{
+			clear:both;
+
+		}
+	/*The layout of the Holy Grail*/
+		div.container{
+			/*padding-left:200px;
+			padding-right:300px;*/
+			padding:0 300px 0 200px;
+			*zoom:1;
+			border:0;
+		}
+		div.main{
+			width:100%;
+			/*background: none;*/
+			float:left;
+			border:0;
+			
+		}
+		div.left{
+			width:200px;
+			background: yellow;
+			float:left;
+			position:relative;
+			left:-200px;
+			margin-left:-100%;
+			border:0;
+			
+		}
+		div.right{
+			width: 300px;
+			background: blue;
+			float:left;
+			/*position:relative;
+			margin-left: -300px;
+			right:-300px;*/
+			margin-right:-300px;
+			border:0;
+
+		}
+		.footer{
+			clear: both;
+		}
+		
+		/* The Layout Of Double Wing*/
+		div.container_wing{
+			*zoom:1;
+		}
+		div.main_wing{
+			width:100%;
+			float:left;
+			border:0;
+		}
+		div.inner_wing{
+			padding: 0 300px 0 200px;
+		}
+		div.left_wing{
+			background: yellow;
+			width: 200px;
+			float:left;
+			margin-left: -100%;
+			border:0;
+		}
+		div.right_wing{
+			background: blue;
+			width:300px;
+			float:left;
+			margin-left:-300px;
+			border:0;
+		}
+
+	</style>
+</head>
+<body>
+	<div class="first_div">This is a test div. The first one. aaaaaaaaa aaaaaaa aaaaaaaaaa aaaa aaaa aaeeee eeeeeee eeeeee eeeeeee ffffff</div>
+	<div class="position_test">This is a test div. The Second one.eeeeeee eeeeghh gggggggggg gggggggggg tttttttttttt gggggggggggg hhhhhhhhhhhhh</div>
+	<div class="test_foot">This is a test div. The Third one. ssssssss eeeeeeee ggggggg ggg 5555555 gggggggg sssssss lllllllllll e</div>
+	<br>
+	<div id="outer">
+		<div id="inner">
+			<div id="left"> sidebar <br> sidebar <br> sidebar  </div>
+			<div id="right"> right. This part is a demo for float and position:relative. Two column with equal height.  </div>
+		</div>
+	</div>
+	<div class="clear"></div>
+	/*The layout of the Holy Grail*/
+
+	<div class="container">
+		<div class="main">This is a div for test. It is the main part of the layout of the Holy Grail. This is a div for test. It is the main part of the layout of the Holy Grail. This is a div for test. It is the main part of the layout of the Holy Grail.</div>
+		<div class="left">This is a div for test. It is the left part of the layout of the Holy Grail. This is a div for test. It is the left part of the layout of the Holy Grail.</div>
+		<div class="right">This is a div for test. It is the right part of the layout of the Holy Grail.</div>
+	</div>
+	<div class="footer">footer</div>
+
+	/*The layout of double wing.*/
+	<div class="container_wing">
+		<div class="main_wing">
+			<div class="inner_wing">This is a div for test. It is the main part of the layout of the double wing. This is a div for test. It is the main part of the layout of the double wing. This is a div for test. It is the main part of the layout of the double wing. </div>
+		</div>
+		<div class="left_wing">This is a div for test. It is the left part of the layout of the double wing. </div>
+		<div class="right_wing">This is a div for test. It is the right part of the layout of the double wing. This is a div for test. It is the right part of the layout of the double wing. </div>
+		<div class="footer">footer</div>
+	</div>
+
+</body>
+</html>
