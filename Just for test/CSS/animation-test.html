@@ -1,0 +1,61 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<style type="text/css">
+		html, body, div{
+			margin:0;
+			padding:0;
+			border:0;
+		}
+
+		.skew-test{
+			width: 100px;
+			height: 100px;
+			background: yellow;
+			margin: 30px 0;
+			-webkit-transform: skew(0, 180deg);
+			-moz-transform: skew(0, 180deg);
+			-ms-transform: skew(0, 180deg);
+			-o-transform:skew(0, 180deg);
+			transform: skew(0, 180deg);
+		}
+		.scale-test{
+			width: 100px;
+			height: 100px;
+			background: red;
+			margin: 30px 0;
+			-webkit-transform: scale(-1, 1);
+			-moz-transform: scale(-1, 1);
+			-ms-transform: scale(-1, 1);
+			-o-transform:scale(-1, 1);
+			transform: scale(-1, 1);
+
+		}
+
+		.rotate-test{
+			width: 100px;
+			height: 100px;
+			background: blue;
+			margin: 30px 0;
+		}
+
+		.translate-test{
+			width: 100px;
+			height: 100px;
+			background: green;
+			margin: 30px 0;
+		}
+	</style>
+</head>
+<body>
+	<div class="container-transform">
+		<div class="skew-test">test skew</div>
+		<div class="scale-test">
+			test scale
+		</div>
+		<div class="rotate-test">test rotate</div>
+		<div class="translate-test"> test translate</div>
+		
+	</div>
+</body>
+</html>
